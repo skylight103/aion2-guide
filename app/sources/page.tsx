@@ -1,0 +1,243 @@
+import { DataTable, NextLinks, PageHeader } from "@/components/ui";
+
+export const metadata = { title: "Sources and Confidence" };
+
+export default function SourcesPage() {
+  return (
+    <>
+      <PageHeader
+        kicker="Reference"
+        title="Sources and confidence"
+        lede="Researched September 6, 2026. Primary weight goes to NC, Steam, and the official livestream UI. KR/TW explains systems, not global numbers."
+      />
+      <DataTable
+        headers={["Source", "What it supports"]}
+        rows={[
+          ["Steam — AION 2", "PC launch, current marketing copy, party-size marketing conflict"],
+          ["NC Gamescom 2026", "October 5 launch, Scale Test, Advance Access, Steam + PURPLE"],
+          ["NC July 8, 2026 monetization notice", "F2P, Kina, Quna, $15 Membership gates market + exchange"],
+          ["NC August 7, 2026 global livestream", "5-man dungeons, first raid 10, 10v10 stats normalized, PvP flag outside Abyss, four character slots, pet cap 5→3, five hubs with no region lock, 30-day Membership on every Founder pack, pack cosmetics stay off the shop"],
+          ["Official livestream UI", "Cumulative Play Reward Adjustment table: 0–83 = 100% cube Kina, down to 20% at 147+"],
+          ["NC Membership language", "Odyle Energy exists globally; members get more capacity and extra cube selections"],
+          ["Current global coverage", "Eight-class launch roster. Brawler is KR/TW only"],
+          [
+            "NC May 2025 class list + Gamevu Oct 2025 EN class intros",
+            "Eight names and roles. Spiritmaster (not Elementalist). Ranger is the later EN name for Marksman. Signature skills Gamevu named in English",
+          ],
+          [
+            "NC March 25, 2026 stigma names",
+            "Battlefield Banner, Fracturing Rush, Shadowstep, Supporting Fire, Hibernation, Command: Proxy, Reincarnating Touch, Barrier Spell",
+          ],
+        ]}
+      />
+
+      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Community systems guides</h2>
+      <p className="text-[var(--muted)]">
+        Used for how the client systems work (Amp, Soul Binding, Arcana, Daevanion, Pet Genus, damage buckets). Not a
+        published NC global numbers sheet.
+      </p>
+      <DataTable
+        headers={["Source", "What it supports", "What it does not prove"]}
+        rows={[
+          [
+            "Kanon — AION 2 PvE systems guide (Google Doc, updated Aug 23, 2026)",
+            "Gear layers (Amp, Bind / Sync / Reset, Manastone vs Soulstone, Theostone, Potential, transfer fragment costs), Pantheon pairs, launch 5-card Arcana, Daevanion board types, Pet Genus, wings Equip vs Owned, Closet, Specialty perk ladder, damage buckets and the live formula",
+            "October 5 item-level doors, 8-card Arcana, Chapter 1 pendant, named KR raid Accuracy/Crit caps as launch targets, or Brawler as a global class",
+          ],
+        ]}
+      />
+      <p className="mt-3 text-sm text-[var(--muted)]">
+        <a href="https://docs.google.com/document/d/11u4wLCG1WfL-xSka2Aze0rI9vYRa7mq3N3Gp1bt0AWY" target="_blank" rel="noreferrer">
+          Kanon’s Google Doc
+        </a>
+        {" · "}
+        <a href="https://www.twitch.tv/kanonxo" target="_blank" rel="noreferrer">
+          twitch.tv/kanonxo
+        </a>
+        {" · "}
+        <a href="https://www.youtube.com/kanonxo" target="_blank" rel="noreferrer">
+          youtube.com/kanonxo
+        </a>
+      </p>
+
+      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">KR/TW used as systems, not gospel</h2>
+      <DataTable
+        headers={["Source", "What it supports", "What it does not prove"]}
+        rows={[
+          [
+            "KR tistory (cvmaxlimbo) — Breeze Boutique (산들바람 상회) ~22–23",
+            "Energy regen starts after that Breeze Boutique quest. Supply requests ~25",
+            "Treat 22 as a published global unlock",
+          ],
+          [
+            "KR May 13, 2026 notes",
+            "Expedition charges 21, Transcendence 14, play-count ladder almost identical to the livestream table",
+            "Promise those charge counts on global day one",
+          ],
+          [
+            "KR Jan 28, 2026 notes",
+            "Proof the play-count table moves in patches (Exploration used to be 7 / 14 / 20 / 21)",
+            "Use the old Exploration table for launch week",
+          ],
+          [
+            "KR later season notes",
+            "Proof the ladder can shrink again (one season cut Expedition 100% down to 63)",
+            "Plan opening week on a nerfed season-3 table",
+          ],
+          [
+            "PixelNitro / U4N / BoostRoom alt guides",
+            "Alts matter. Energy caps waste regen. Weekly crafts are per character",
+            "35–45 farm brackets, 5–8 alt gold figures, named KR goldmine maps",
+          ],
+          [
+            "KR parse threads (Inven) and A2Power-style logs",
+            "Assassin peak first. Ranger often first on median. SM / Sorc clustered. Glad lower personal meter",
+            "A single exact DPS number for global launch",
+          ],
+          [
+            "KR Sept 2–5, 2026 class notes",
+            "Assassin Phantom Clone 90s + extra crit damage. Spiritmaster fusion PvE +20%. Ranger Aimed Arrow spec bump. Gladiator bugfixes. Sorcerer not in this pass",
+            "Those numbers shipping on global day one",
+          ],
+          [
+            "KR Daily Game / Inven March 18, 2026",
+            "Combat Power (전투력) is an official character total, toggled next to item level. Doors still use item level. Buffs do not count",
+            "Combat Power as a printed global day-one label",
+          ],
+          [
+            "KR Gameple / official enhance UI (launch + later patches)",
+            "Enhance and Breakthrough do not break the piece. Soul Imprint starts on first wear. Manastones on armor, Spirit Stones on jewelry. Alchemy upgrades stones",
+            "A single +N stop that fits every slot on global day one",
+          ],
+          [
+            "KR Season 3 press (GameToc) and succession guides",
+            "Unique is a bridge. Hero is the target. Three Unique→Hero successions per season. Weapon and Guard first. Crafted Dragon Lord > Expedition on the same grade",
+            "Those recipe names and Kina prices on October 5",
+          ],
+          [
+            "KR May 2026 Muspel / Abyss notes",
+            "Chalice of Muspel item level 4,500, Lava Heart weapon/Guard, brooch slot, wings enhance, Genesis / Nemesis Dragon Lord (창룡왕 / 멸룡왕) transfer-craft, High Commander (친위대장) Abyss rank",
+            "Muspel as a week-one farm",
+          ],
+          [
+            "KR Inven craft posts + Aion2Tool probability page",
+            "PVE weapons finish on the bench. Combo makes Splendent (빛나는) pieces. Craft proficiency later raised to 70. Failed crafts go to supply requests",
+            "A published global Professional 70 cap or named Orichalcum node map",
+          ],
+          [
+            "Essence Extraction writeups (Fextralife / KR tistory)",
+            "One gather skill. Three attempts per node. Specialty points cannot max every line. Odyle morphs into other mats. Reset ~50,000 Kina",
+            "Treat January 2026 node lists as launch gospel",
+          ],
+          [
+            "KR Gameple / Gamechosun Odyle Energy writeups",
+            "F2P: 10 / 3 hours, cap 560. Membership (챈가룽, later folded into 콰이링): +50% regen and cap — 15 / 3 hours, cap 840. Weekly passive 560 vs 840 if you never sit full",
+            "Those exact ticks on global day one",
+          ],
+          [
+            "NC August 12, 2025 — AION2NIGHT combat taxonomy",
+            "Solo: Nightmare, Seal / Sealed, Garrison, Awakening. Party: Expedition, Transcendence, Eradication, Sanctuary. PvP: Arena, Battlefield, Rift, Abyss. Casual: Daily Dungeon, Shugo Festa",
+            "2025 party sizes (1–4 / 8) or Hunt / Eradication as a global launch pillar. KR Season 3 removed Eradication",
+          ],
+          [
+            "NC March 25, 2026 class overhaul",
+            "Perfect Shield Block / Perfect Parry. PvP and PvE damage calculations separated. Bound Kina vs regular Kina. Stigma expanded (KR: five slots)",
+            "Those defensive names, slot counts, or coefficient values on global day one",
+          ],
+          [
+            "NC July 6, 2026 Chapter 1 notes",
+            "KR moved Expedition / Transcendence to 5 and Sanctuary to 10. Expedition / Transcendence tickets removed; cubes spend Odyle Energy",
+            "Print KR item-level doors or ticket-off as a published global rule",
+          ],
+          [
+            "Gamevu August 2025 Fire Temple demo",
+            "Door checks item level. Mid-bosses have an aggro circle. Final: dodge flames left / right. No auto-combat. Wings are farmed",
+            "Aether Energy Cube tickets or 4-man size as October 5 facts",
+          ],
+          [
+            "KR Inven January 28, 2026 notes",
+            "Official Skill Macro started as Weak / Strong Attack cancel (평캔). Hold-to-run, delay steps, minimum 50 ms, more skills later. Skill reservation is a separate combat toggle",
+            "A published global Skill Macro or reservation default",
+          ],
+          [
+            "KR Inven class boards + aion2hub skill lists",
+            "Weapons (sword+shield, greatsword, dagger, bow, spellbook, orb, mace+shield, staff). Cancel/reservation habits per class. Cleric unique ally rez vs Reincarnating Touch self-rez",
+            "Those skill lists, slot counts, or heal math on October 5",
+          ],
+        ]}
+      />
+
+      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Maps</h2>
+      <p className="text-[var(--muted)]">
+        The week-one map page hosts Aion 2 Atlas parchment for Verteron / Altgard. Named hideouts, forts, most story
+        camps, and Empyrean Traces use in-game marker coordinates from aion2-interactive-map (CC BY-NC 4.0), Y-flipped
+        so they sit on this parchment (they line up with Atlas’s unlabeled sealed/fort dots to ~0.2%). We do not ship
+        Atlas’s marker JSON.
+      </p>
+      <DataTable
+        headers={["Source", "What it supports", "What it does not prove"]}
+        rows={[
+          [
+            "aion2hub leveling hideout tables + monolith pages",
+            "English sealed-dungeon names, recommended levels, KR first-clear tables, Hero-quest camp names, and the Verteron / Altgard monolith token ladder (560 Empyrean Traces to level 30)",
+            "GPS, a published global teleporter list, or Altgard fort names",
+          ],
+          [
+            "questlog.gg dungeon pages (type: seal)",
+            "English name cross-check plus in-game seal flavor used on /map briefings (Cave of the Desperate, Karat's Nest, Marsh Library, and others)",
+            "Week-one coordinate dumps or Eltnen / Morheim as October 5",
+          ],
+          [
+            "Inven 주신의 흔적 (Nov 21, 2025)",
+            "Feather collectible, village monolith turn-in, 560 per Elyos / Asmodian field, and the Wisdom Stone / Revelation Amulet Enhance Scroll / Hidden Cube key ladder",
+            "October 5 GPS, or a roof-by-roof list we copied",
+          ],
+          [
+            "aion2-interactive-map (github, CC BY-NC 4.0)",
+            "Named in-game x/y for Verteron / Altgard seals, occupations, villages, teleports, and 560 monolith-material markers per world map (Empyrean Traces). /map stores those as percents on the Atlas parchment (Y-flipped). Median 0.16% from Atlas’s unlabeled sealed/fort dots",
+            "A license for commercial reuse, Eltnen / Morheim as week one, or NCSOFT GPS",
+          ],
+          [
+            "aion2atlas.com parchment maps (hosted on /map, Sep 9, 2026)",
+            "Week-one geography art for Verteron / Altgard. Layer counts on their live map: Verteron 51 sealed / 10 forts, Altgard 59 sealed / 15 forts",
+            "Named pins (their popups are often unlabeled), a license beyond citation, or October 5 GPS. Their ads and marker JSON stay theirs",
+          ],
+          [
+            "aion2t.com/map",
+            "Denser KR Leaflet atlas (NPCs, traces, gather nodes, Eltnen / Morheim / Chaotic Abyss). Not used as the week-one base map, because that zone list contradicts week one",
+            "That those zones or 114 Verteron “strongholds” are the week-one job",
+          ],
+          [
+            "Fextralife Regions (Dec 2025)",
+            "Flavor for Dawn Legion Base in Cantas Valley, Elun swamp, Artamia Canyon, Fugitive Village, Moslan / Nornir",
+            "A current interactive map (their embed last edited Jan 2026) or classic Sanctum / Pandaemonium as AION 2 week-one hubs",
+          ],
+        ]}
+      />
+
+      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Known conflicts</h2>
+      <DataTable
+        headers={["Conflict", "Working read"]}
+        rows={[
+          ["Expedition party size 4 vs 5 / 10", "Plan 5, read the UI, sit one if the door says 4"],
+          ["Livestream 0–83 vs KR May ≤84", "Nearly the same ladder, off by one. Prefer the livestream table. 84 is 80% there, 100% on the KR May notes"],
+          ["Per-server play-count: realm vs barracks", "Plan as account-on-realm. Confirm the counter in-client"],
+          ["Energy cap 560 vs 840, regen 10 vs 15 / 3 hours", "Same KR system, two wallets. F2P is 10 / 3 hours and cap 560. Membership is +50% (15 / 3 hours, cap 840). Global confirms more capacity; those exact ticks are unpublished"],
+          ["Gladiator as DPS, bruiser, or off-tank", "Bruiser DPS. Templar is the main tank"],
+          ['Some outlets still say "September launch"', "That window moved to October 5"],
+          ["Atlas 10 Verteron forts vs aion2hub 13–14 named garrisons vs aion2t 100+", "Different layers. We pin the named aion2hub list on in-game marker spots. Atlas dots are unlabeled. aion2t is a KR dump, not week-one"],
+        ]}
+      />
+      <p className="mt-8 text-[var(--muted)]">
+        After October 5, open the in-game remaining-rewards panel and the Cumulative Play tooltip and treat those as
+        the new source of truth. This site is a fan guide and is not affiliated with NC Corporation.
+      </p>
+      <p className="mt-4">
+        <a href="https://store.steampowered.com/app/3393110/AION_2/" target="_blank" rel="noreferrer">
+          AION 2 on Steam
+        </a>
+      </p>
+      <NextLinks items={[{ href: "/map", label: "Week-one map" }, { href: "/alts", label: "Barracks and Energy" }, { href: "/", label: "Home" }]} />
+    </>
+  );
+}
