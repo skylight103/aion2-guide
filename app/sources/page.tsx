@@ -8,7 +8,7 @@ export default function SourcesPage() {
       <PageHeader
         kicker="Reference"
         title="Sources and confidence"
-        lede="Researched September 6, 2026. Primary weight goes to NC, Steam, and the official livestream UI. KR/TW explains systems, not global numbers."
+        lede="Researched September 6, 2026; NotMeter dungeon cache added September 19. Primary weight goes to NC, Steam, and the official livestream UI. KR/TW explains systems, not global numbers."
       />
       <DataTable
         headers={["Source", "What it supports"]}
@@ -90,9 +90,14 @@ export default function SourcesPage() {
             "35–45 farm brackets, 5–8 alt gold figures, named KR goldmine maps",
           ],
           [
+            "NotMeter (notmeter.com) dungeon cache, generated Sept 19, 2026 23:03 UTC",
+            "nDPS vs raw DPS, P75 class sort, sample rules (40 logs, trim 10%, one character = one sample, 200K CP-gap drop), Snowfield of Sorrow / Deus Hard relative order, combat-rate averages, and the four verified calculator conversions (Power / Destruction / Justice / Wisdom)",
+            "A Global week-one DPS number, Brawler as a launch class, Snowfield / Muspel as October 5 farms, or their CP-normalized Class Performance score (no A/B/C cells on this snapshot)",
+          ],
+          [
             "KR parse threads (Inven) and A2Power-style logs",
-            "Assassin peak first. Ranger often first on median. SM / Sorc clustered. Glad lower personal meter",
-            "A single exact DPS number for global launch",
+            "Early-September peak-vs-median read: Assassin ceiling, Ranger median. Kept as history",
+            "A single exact DPS number for global launch. Later NotMeter nDPS on Snowfield of Sorrow supersedes that order",
           ],
           [
             "KR Sept 2–5, 2026 class notes",
@@ -170,9 +175,10 @@ export default function SourcesPage() {
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Maps</h2>
       <p className="text-[var(--muted)]">
         The week-one map page hosts Aion 2 Atlas parchment for Verteron / Altgard. Named hideouts, forts, most story
-        camps, and Empyrean Traces use in-game marker coordinates from aion2-interactive-map (CC BY-NC 4.0), Y-flipped
-        so they sit on this parchment (they line up with Atlas’s unlabeled sealed/fort dots to ~0.2%). We do not ship
-        Atlas’s marker JSON.
+        camps, Empyrean Traces, Hidden Cubes, and Kibelisks use in-game marker coordinates from aion2-interactive-map
+        (CC BY-NC 4.0), Y-flipped so they sit on this parchment (they line up with Atlas’s unlabeled sealed/fort dots
+        to ~0.2%). Vendor desks sit on those same village / camp markers with small offsets. Gather nodes use aion2t
+        client-extract GPS fitted to those licensed traces. We do not ship Atlas or interactivemap.app marker JSON.
       </p>
       <DataTable
         headers={["Source", "What it supports", "What it does not prove"]}
@@ -194,8 +200,13 @@ export default function SourcesPage() {
           ],
           [
             "aion2-interactive-map (github, CC BY-NC 4.0)",
-            "Named in-game x/y for Verteron / Altgard seals, occupations, villages, teleports, and 560 monolith-material markers per world map (Empyrean Traces). /map stores those as percents on the Atlas parchment (Y-flipped). Median 0.16% from Atlas’s unlabeled sealed/fort dots",
-            "A license for commercial reuse, Eltnen / Morheim as week one, or NCSOFT GPS",
+            "Named in-game x/y for Verteron / Altgard seals, occupations, villages, teleports (Kibelisks), Hidden Cubes (118 / 108), and 560 monolith-material markers per world map (Empyrean Traces). types.yaml also names the gather subtypes (Odyle, Orichalcum Ore, Yggdrasil Log, gems, Aria, cooking mats). Official UT_Marker / Hidden Cube / Gather icons on /map come from the same extract. /map stores those as percents on the Atlas parchment (Y-flipped). Median 0.16% from Atlas’s unlabeled sealed/fort dots",
+            "Gather-node GPS inside World_L_A / World_D_A (the YAML lists the types, not the dots), a license for commercial reuse, Eltnen / Morheim as week one, or NCSOFT GPS",
+          ],
+          [
+            "interactivemap.app Verteron category list (UI only)",
+            "Which Find layers exist and that craft benches are a two-town set (alchemy / armor / smith / cook / handicraft). Used as a gazetteer, not a coordinate dump",
+            "A license to copy their marker JSON, icon pack, or 2,000+ gather-node dots. Pin art on /map is the in-game UT_Marker set, not their PNG rename",
           ],
           [
             "aion2atlas.com parchment maps (hosted on /map, Sep 9, 2026)",
@@ -203,9 +214,9 @@ export default function SourcesPage() {
             "Named pins (their popups are often unlabeled), a license beyond citation, or October 5 GPS. Their ads and marker JSON stay theirs",
           ],
           [
-            "aion2t.com/map",
-            "Denser KR Leaflet atlas (NPCs, traces, gather nodes, Eltnen / Morheim / Chaotic Abyss). Not used as the week-one base map, because that zone list contradicts week one",
-            "That those zones or 114 Verteron “strongholds” are the week-one job",
+            "aion2t.com map API (zones 2606 / 2611)",
+            "Client-extract gather GPS (Odyle, Orichalcum, gems, herbs, cooking, logs, shellfish) and a second 560-trace set used only as control points. /map fits those lat/lng onto this parchment against the licensed traces (Y-flipped bbox; median ~0.14% of the island). Official UT_Marker_Gather art, including shellfish",
+            "That Eltnen / Morheim / Chaotic Abyss or 114 Verteron “strongholds” are the week-one job, or a license to copy their UI",
           ],
           [
             "Fextralife Regions (Dec 2025)",

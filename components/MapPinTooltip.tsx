@@ -1,11 +1,16 @@
+import { pinIcon } from "@/lib/mapIcons";
 import { pinGuide, type LootRow } from "@/lib/mapPinGuide";
 import { districtById, mapLayerMeta, type MapPin } from "@/lib/weekOneMap";
 
-const layerTone: Record<MapPin["layer"], "hub" | "sealed" | "fort" | "trace"> = {
+const layerTone: Record<MapPin["layer"], "hub" | "sealed" | "fort" | "trace" | "cube" | "kibelisk" | "vendor" | "gather"> = {
   hub: "hub",
   sealed: "sealed",
   stronghold: "fort",
   trace: "trace",
+  cube: "cube",
+  kibelisk: "kibelisk",
+  vendor: "vendor",
+  gather: "gather",
 };
 
 function LootTable({ rows, caption }: { rows: LootRow[]; caption: string }) {
@@ -46,7 +51,7 @@ export function PinBriefing({
   return (
     <div className={`map-brief is-${layerTone[pin.layer]}`}>
       <p className="map-brief-kicker">
-        <span className="map-brief-dot" />
+        <img className="map-brief-icon" src={pinIcon(pin, found)} alt="" />
         {layer.short}
         {pin.level ? ` · Lv ${pin.level}` : ""}
       </p>
@@ -72,7 +77,7 @@ export function PinBriefing({
         <p>{guide.do}</p>
       </div>
       {guide.loot.length > 0 ? <LootTable rows={guide.loot} caption={lootCaption} /> : null}
-      {pin.layer === "trace" && onToggleFound ? (
+      {(pin.layer === "trace" || pin.layer === "cube") && onToggleFound ? (
         <button type="button" className={`map-brief-found${found ? " is-on" : ""}`} onClick={onToggleFound}>
           {found ? "Found" : "Mark found"}
         </button>

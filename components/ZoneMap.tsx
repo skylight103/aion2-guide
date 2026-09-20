@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef } from "react";
 import { MapPinTooltip } from "@/components/MapPinTooltip";
+import { pinIcon } from "@/lib/mapIcons";
 import { pinPoint } from "@/lib/mapPinCoords";
 import {
   mapArt,
@@ -16,6 +17,10 @@ const layerClass: Record<MapLayer, string> = {
   sealed: "map-pin-sealed",
   stronghold: "map-pin-fort",
   trace: "map-pin-trace",
+  cube: "map-pin-cube",
+  kibelisk: "map-pin-kibelisk",
+  vendor: "map-pin-vendor",
+  gather: "map-pin-gather",
 };
 
 type Transform = { x: number; y: number; s: number };
@@ -144,13 +149,13 @@ export function ZoneMap({
 
     const fitTransform = (): Transform => {
       const { width, height } = size();
-      const s = Math.min(width / WORLD, height / WORLD) * 0.96;
+      const s = Math.max(width / WORLD, height / WORLD);
       return { x: (width - WORLD * s) / 2, y: (height - WORLD * s) / 2, s };
     };
 
     const clampS = (s: number) => {
       const fit = fitRef.current.s;
-      return Math.min(fit * 8, Math.max(fit * 0.88, s));
+      return Math.min(fit * 8, Math.max(fit, s));
     };
 
     const setScaleAround = (nextS: number, ox: number, oy: number) => {
@@ -409,7 +414,7 @@ export function ZoneMap({
                 <button
                   key={pin.id}
                   type="button"
-                  className={`map-pin map-pin-side-${side} ${layerClass[pin.layer]}${on ? " is-on" : ""}${found?.has(pin.id) ? " is-got" : ""}`}
+                  className={`map-pin map-pin-side-${side} ${layerClass[pin.layer]}${pin.kind ? ` map-pin-kind-${pin.kind}` : ""}${on ? " is-on" : ""}${found?.has(pin.id) ? " is-got" : ""}`}
                   style={{ left: `${x}%`, top: `${y}%` }}
                   aria-label={pin.name}
                   title={pin.name}
@@ -422,7 +427,7 @@ export function ZoneMap({
                   }}
                 >
                   <span className="map-pin-visual">
-                    <span className="map-pin-dot" />
+                    <img className="map-pin-icon" src={pinIcon(pin, found?.has(pin.id))} alt="" draggable={false} />
                     <span className="map-pin-name">{pin.name}</span>
                   </span>
                 </button>
@@ -454,8 +459,8 @@ export function ZoneMap({
         <button type="button" aria-label="Zoom out" onClick={() => apiRef.current?.zoomBy(1 / 1.45)}>
           −
         </button>
-        <button type="button" aria-label="Reset map" onClick={() => apiRef.current?.fit()}>
-          Reset
+        <button type="button" aria-label="Reset map" className="week-map-zoom-fit" onClick={() => apiRef.current?.fit()}>
+          Fit
         </button>
       </div>
       <p className="week-map-hint">Scroll or pinch to zoom · drag to pan · click a pin for the briefing</p>

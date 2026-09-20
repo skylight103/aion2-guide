@@ -23,6 +23,9 @@ const faqs = [
   ["Kina or Kinah?", "Official EN: Kina. Same gold pile."],
   ["Where are sealed dungeons / strongholds?", "Map pins named Verteron / Altgard hideouts and forts on the parchment from in-game marker data. Zoom in to read names."],
   ["What are Empyrean Traces?", "Field feathers. Turn them into that zone’s monolith for Wisdom Stones and Revelation Amulet Enhance Scrolls. Verteron and Altgard each have 560. Turn Traces on at /map and mark them found."],
+  ["What are Hidden Cubes?", "Field chests. Monolith keys open them. Verteron has 118, Altgard 108. Turn Cubes on at /map and mark them found."],
+  ["What is a Kibelisk?", "The field teleport pad. 61 on each week-one map. Turn Pads on at /map. Walk to it once, then hop."],
+  ["Where are alchemy / armor / smith tables?", "The two towns on each map: Dawn Legion Base and Zumion (Verteron), Safe Haven and Nornir (Altgard). Turn Vendors on at /map. Camps keep general goods and a crafting merchant; the full bench set is town-only."],
 ];
 
 export default function FaqPage() {

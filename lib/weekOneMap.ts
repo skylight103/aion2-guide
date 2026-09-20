@@ -1,8 +1,11 @@
+import { gathersForFaction } from "@/lib/mapGathers";
 import { tracesForFaction } from "@/lib/mapTraces";
+import { findsForFaction } from "@/lib/mapPois";
 
 export type MapFaction = "elyos" | "asmodian";
-export type MapLayer = "hub" | "sealed" | "stronghold" | "trace";
-export type MapLayerGroup = "stops" | "find";
+export type MapLayer = "hub" | "sealed" | "stronghold" | "trace" | "cube" | "kibelisk" | "vendor" | "gather";
+export type MapLayerGroup = "locations" | "collectibles" | "npc";
+export type MapFindLayer = "trace" | "cube" | "kibelisk" | "vendor" | "gather";
 
 export type MapDistrict = {
   id: string;
@@ -25,9 +28,11 @@ export type MapPin = {
   level?: number;
   weekOne: boolean;
   note?: string;
-  /** Parchment percent. Traces carry this; hubs / seals / forts use mapPinCoords. */
+  /** Parchment percent. Find layers carry this; hubs / seals / forts use mapPinCoords. */
   x?: number;
   y?: number;
+  /** Vendor desk type. */
+  kind?: string;
 };
 
 export const mapArt = {
@@ -365,12 +370,43 @@ export const mapLayerMeta: Record<MapLayer, { label: string; short: string; why:
     short: "Traces",
     why: "Field feathers. Turn them into that zone’s monolith for Wisdom Stones and Revelation Amulet Enhance Scrolls.",
   },
+  cube: {
+    label: "Hidden Cubes",
+    short: "Cubes",
+    why: "Field chests. Monolith keys open them. Mark found after you loot one.",
+  },
+  kibelisk: {
+    label: "Kibelisks",
+    short: "Pads",
+    why: "Teleport pads on the field. Unlock the camp, then hop instead of walking back.",
+  },
+  vendor: {
+    label: "Vendors & tables",
+    short: "Vendors",
+    why: "General goods, crafting merchants, and the two town bench sets (alchemy, armor, smith, cook, handicraft).",
+  },
+  gather: {
+    label: "Resources",
+    short: "Gather",
+    why: "Field nodes. Official gather markers. Turn one material on, then zoom.",
+  },
 };
 
 export const mapLayerGroups: Record<MapLayerGroup, { label: string; layers: MapLayer[] }> = {
-  stops: { label: "Stops", layers: ["hub", "sealed", "stronghold"] },
-  find: { label: "Find", layers: ["trace"] },
+  locations: { label: "Locations", layers: ["hub", "sealed", "stronghold", "kibelisk"] },
+  collectibles: { label: "Collectibles", layers: ["trace", "cube"] },
+  npc: { label: "NPC", layers: ["vendor"] },
 };
+
+export const mapFindLayers: MapFindLayer[] = ["trace", "cube", "kibelisk", "vendor", "gather"];
+
+export function isFindLayer(layer: MapLayer): layer is MapFindLayer {
+  return layer === "trace" || layer === "cube" || layer === "kibelisk" || layer === "vendor" || layer === "gather";
+}
+
+export function isCollectibleLayer(layer: MapLayer) {
+  return layer === "trace" || layer === "cube";
+}
 
 export const mapZoneMeta: Record<
   MapFaction,
@@ -407,7 +443,12 @@ export const mapZoneMeta: Record<
 };
 
 export function pinsForFaction(faction: MapFaction) {
-  return [...mapPins.filter((p) => p.faction === faction), ...tracesForFaction(faction)];
+  return [
+    ...mapPins.filter((p) => p.faction === faction),
+    ...tracesForFaction(faction),
+    ...findsForFaction(faction),
+    ...gathersForFaction(faction),
+  ];
 }
 
 export function districtById(faction: MapFaction, id: string) {

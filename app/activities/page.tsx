@@ -24,6 +24,8 @@ export default function ActivitiesPage() {
           ["Sealed dungeons / hideouts", "Targeted power and crystals", "When story fights bounce you. Not an alt farm. Named list on the week-one map"],
           ["Strongholds / Garrisons", "Progression resources", "Support, do not replace story. Elyos forts are named; Altgard forts are still unlabeled"],
           ["Empyrean Traces", "Wisdom Stones and the zone monolith", "Pick feathers up on-route. Turn Verteron in at Dawn Legion Base, Altgard at Shadow Hall. Track them on the week-one map"],
+          ["Hidden Cubes", "Field chests opened with monolith keys", "Turn Cubes on at /map. The same monolith that eats feathers also hands the keys"],
+          ["Kibelisks", "Field teleport pads", "Unlock the pad when you reach the camp, then hop instead of walking the same road twice"],
           ["Daily Dungeon", "Short repeatable juice", "After it exists, on characters that already have energy"],
           ["Expedition / Conquest", "First real group gear and cube-Kina lane", "Highest clean difficulty. This is the play-count that matches the livestream table"],
           ["Exploration (solo-scaled)", "KR early Unique gear and practice", "Fire Temple unlocks ~36–38 in KR. Later than the energy gate"],
@@ -31,7 +33,7 @@ export default function ActivitiesPage() {
           ["Transcendence / Sanctuary", "Later group ladders", "Only after you meet the real gate. Not week-one barracks work"],
           ["Abyss + open PvP", "Faction war, Abyss Points", "After you can fly and not feed. Weekly time can be capped"],
           ["Arenas / duels", "Learn PvP cleanly", "Practice without ruining a gear night"],
-          ["Gathering / crafting", "Consumables and weekly morphs", "Each character has its own weekly craft counts. Alts help here too"],
+          ["Gathering / crafting", "Consumables and weekly morphs", "Odyle first, then ore. Turn materials on under /map Resources. Each character has its own weekly craft counts"],
         ]}
       />
 

@@ -9,7 +9,7 @@ export default function MapPage() {
       <div className="week-map-masthead">
         <p>Systems</p>
         <h1>Week-one map</h1>
-        <span>KR geography · named stops and Empyrean Traces · Eltnen / Morheim / Chaotic Abyss off</span>
+        <span>KR geography · locations, collectibles, NPC, resources · Eltnen / Morheim / Chaotic Abyss off</span>
       </div>
       <WeekOneMap />
 
@@ -23,9 +23,14 @@ export default function MapPage() {
         briefing and, if it has a first clear, the loot table.
       </p>
       <p className="mt-3 text-[var(--muted)]">
-        Traces is the collectible layer: 560 Empyrean Traces on Verteron, 560 on Altgard. They are off until you turn
-        the chip on, then they show when you zoom. Mark a feather found on this device. Hideouts stay the named list;
-        gathering nodes, Hidden Cubes, and vendors are the next Find layers.
+        The right list is the navigator: Locations, Collectibles, NPC, Resources. Pads start on. Traces, cubes, and
+        vendors stay off until you open that section and turn them on, then they show when you zoom. Traces are the
+        560 Empyrean feathers per zone. Cubes are Hidden Cubes (118 on Verteron, 108 on Altgard). Pads are the 61
+        Kibelisks. Vendors mark general goods and craft shops at named camps, plus the full bench set at the two towns
+        — Dawn Legion Base and Zumion on Verteron, Safe Haven and Nornir on Altgard. Mark traces and cubes found on
+        this device. Resources are field nodes — Odyle, Orichalcum, gems, herbs, logs, cooking mats, and shellfish —
+        each with the official gather marker. Turn a material on, then zoom. Nodes start off because there are
+        thousands of them.
       </p>
       <NextLinks items={[{ href: "/activities", label: "Activities" }, { href: "/sources", label: "Sources" }]} />
     </>

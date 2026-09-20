@@ -1,4 +1,6 @@
+import { gatherMeta, gatherStretch } from "@/lib/mapGathers";
 import { traceStretch } from "@/lib/mapTraces";
+import { vendorKindMeta, type VendorKind } from "@/lib/mapVendors";
 import {
   districtById,
   type MapFaction,
@@ -36,6 +38,7 @@ export const lootItem = {
   wisdom: "Wisdom Stone",
   amulet: "Revelation Amulet Enhance Scroll",
   cubeKey: "Key: Hidden Cube",
+  cube: "Hidden Cube",
 } as const;
 
 function stoneAmount(level: number | undefined, faction: MapFaction): string {
@@ -847,11 +850,79 @@ const traceFlavorByStretch: Record<string, string> = {
   "Immortal Isle": "Feather on Immortal Isle. Painted near Ishalgen on this parchment; it is not the prologue farm.",
 };
 
+const vendorGuide: Record<VendorKind, { flavor: string; why: string; do: string }> = {
+  goods: {
+    flavor: "Repair, potions, and the usual camp stall.",
+    why: "General Goods. The desk that keeps a camp usable when bags are full of junk.",
+    do: "Sell trash and top potions here. Craft benches live in the two towns, not at every camp.",
+  },
+  alchemy: {
+    flavor: "Town alchemy bench. Potions and morph fuel get made here.",
+    why: "Alchemy Table. One of the two town benches on this map — not a field camp desk.",
+    do: "Park crafts on this character’s weekly counts. Odyle morphs sit with the Morph Merchant, not this table.",
+  },
+  armor: {
+    flavor: "Town armor bench. Plate and leather work happens here.",
+    why: "Armor Table. Same two-town pattern as the other craft benches.",
+    do: "Use it when a recipe wants the armor station. The Crafting Merchant next to it sells kits.",
+  },
+  blacksmith: {
+    flavor: "Town smith bench. Weapons and metal work.",
+    why: "Blacksmith Table. Dawn Legion Base / Zumion on Verteron, Safe Haven / Nornir on Altgard.",
+    do: "Smith here, then stash extras in Storage on the same plaza.",
+  },
+  cooking: {
+    flavor: "Town cooking bench. Food that actually lasts a pull.",
+    why: "Cooking Table. The other town has the twin bench if this one is crowded.",
+    do: "Cook the week’s food on the character who will eat it. Alts keep their own weekly craft counts.",
+  },
+  handicraft: {
+    flavor: "Town handicraft bench. Accessories and odds.",
+    why: "Handicraft Table. Same two-town set as alchemy and smith.",
+    do: "Make the small crafts here. Kits come from the Crafting Merchant on this plaza.",
+  },
+  craft: {
+    flavor: "Kits, tools, and the shop that feeds the benches.",
+    why: "Crafting Merchant. Camps keep one; the two towns keep the full bench set beside them.",
+    do: "Buy what the nearby table needs, then walk three steps. Do not fly back to town for a needle.",
+  },
+  morph: {
+    flavor: "Substance Morph desk. Odyle and leftover gear go through here.",
+    why: "Morph Merchant. One in the early town, one in the later town.",
+    do: "Dump spare Odyle and dungeon leftovers into the morph you actually need this week.",
+  },
+  storage: {
+    flavor: "Personal stash at this camp.",
+    why: "Storage. Towns plus a couple of later desks so you are not flying feathers across the map.",
+    do: "Park monolith keys, feathers, and craft kits here. The cube layer is a different chest.",
+  },
+};
+
+function vendorKind(pin: MapPin): VendorKind | null {
+  const kind = pin.kind;
+  return kind && kind in vendorGuide ? (kind as VendorKind) : null;
+}
+
 function fallbackFlavor(pin: MapPin): string {
   const district = districtById(pin.faction, pin.district);
   const where = district ? `${district.label} — ${district.hint}` : pin.district;
   if (pin.layer === "trace") {
     return `${pin.name} is an Empyrean Trace on this stretch.`;
+  }
+  if (pin.layer === "cube") {
+    return `${pin.name} is a Hidden Cube on this stretch.`;
+  }
+  if (pin.layer === "kibelisk") {
+    return `${pin.name.replace(/^Kibelisk · /, "")} is the teleport pad on this stretch.`;
+  }
+  if (pin.layer === "vendor") {
+    const kind = vendorKind(pin);
+    return kind ? vendorGuide[kind].flavor : `${pin.name} is a camp desk.`;
+  }
+  if (pin.layer === "gather") {
+    const meta = gatherMeta(pin.kind);
+    const stretch = gatherStretch(pin);
+    return `${meta?.label ?? "A node"} on the ${stretch} stretch.`;
   }
   if (pin.layer === "sealed") {
     return `${pin.name} is a recommended lv ${pin.level} sealed hideout in ${where}.`;
@@ -866,6 +937,19 @@ function fallbackWhy(pin: MapPin): string {
   if (pin.layer === "trace") {
     const zone = pin.faction === "elyos" ? "Verteron" : "Altgard";
     return `One ${zone} Empyrean Trace. That zone’s monolith takes 560 feathers to reach level 30.`;
+  }
+  if (pin.layer === "cube") {
+    return "Hidden Cube. Monolith keys open it. Mark it found after you loot it.";
+  }
+  if (pin.layer === "kibelisk") {
+    return "Kibelisk. Unlock this pad when you reach the camp, then hop instead of walking the same road twice.";
+  }
+  if (pin.layer === "vendor") {
+    const kind = vendorKind(pin);
+    return kind ? vendorGuide[kind].why : "Camp desk.";
+  }
+  if (pin.layer === "gather") {
+    return gatherMeta(pin.kind)?.why ?? "Field node on this stretch.";
   }
   if (pin.layer === "sealed") {
     return pin.weekOne
@@ -907,12 +991,22 @@ function fortChips(): string[] {
   return uniqueChips(["Fort", lootItem.belt, lootItem.manastones]);
 }
 
+function cubeChips(): string[] {
+  return uniqueChips([lootItem.cube, lootItem.cubeKey]);
+}
+
+function cubeStretch(pin: MapPin) {
+  return pin.name.replace(/^Hidden Cube · /, "").replace(/ \d+$/, "");
+}
+
 export function pinGuide(pin: MapPin): PinGuide {
-  const stretch = pin.layer === "trace" ? traceStretch(pin) : "";
+  const stretch = pin.layer === "trace" ? traceStretch(pin) : pin.layer === "cube" ? cubeStretch(pin) : "";
   const flavor =
     pin.layer === "trace"
       ? (traceFlavorByStretch[stretch] ?? fallbackFlavor(pin))
-      : (flavorByName[pin.name] ?? districtFlavor[pin.district] ?? fallbackFlavor(pin));
+      : pin.layer === "vendor" || pin.layer === "gather"
+        ? fallbackFlavor(pin)
+        : (flavorByName[pin.name] ?? districtFlavor[pin.district] ?? fallbackFlavor(pin));
   const why = whyByName[pin.name] ?? fallbackWhy(pin);
   const specificDo = doByName[pin.name];
 
@@ -925,6 +1019,56 @@ export function pinGuide(pin: MapPin): PinGuide {
         ? `Pick it up when you pass it. Turn the stack in at the monolith at ${hub}. Mark it found here so the rest stay easy to see.`
         : `This stretch is after the week-one band. Leave roofs, pond floors, and high ledges until you can fly the gap. Turn in at ${hub}.`,
       chips: traceChips(),
+      loot: [],
+    };
+  }
+
+  if (pin.layer === "cube") {
+    return {
+      flavor,
+      why,
+      do: pin.weekOne
+        ? "Open it when you have a Hidden Cube key from the monolith. Mark it found so the remaining chests stay easy to see."
+        : "This stretch is after the week-one band. Leave high ledges and later towns until you can fly the gap.",
+      chips: cubeChips(),
+      loot: [],
+    };
+  }
+
+  if (pin.layer === "kibelisk") {
+    return {
+      flavor,
+      why,
+      do: pin.weekOne
+        ? "Walk to the pad once. After it lights, use it to skip the road back to this camp."
+        : "Later-band pad. Unlock it when the Hero quest actually sends you here.",
+      chips: uniqueChips(["Kibelisk", "Teleport"]),
+      loot: [],
+    };
+  }
+
+  if (pin.layer === "vendor") {
+    const kind = vendorKind(pin);
+    const meta = kind ? vendorKindMeta[kind] : null;
+    return {
+      flavor,
+      why,
+      do: specificDo ?? (kind ? vendorGuide[kind].do : "Use the desk, then get back on the Hero quest."),
+      chips: uniqueChips([meta?.label ?? "Vendor", pin.weekOne ? "Week one" : "Later town"]),
+      loot: [],
+    };
+  }
+
+  if (pin.layer === "gather") {
+    const meta = gatherMeta(pin.kind);
+    return {
+      flavor,
+      why,
+      do:
+        pin.kind === "odyle"
+          ? "Hover and channel. Empty wings mid-channel is a fail. Stack Odyle first, then get back on the road."
+          : "Channel the node. Three attempts. Put the stack on the crafter who will use it, then get back on the road.",
+      chips: uniqueChips([meta?.label ?? "Gather", pin.weekOne ? "Week one" : "Later stretch"]),
       loot: [],
     };
   }
