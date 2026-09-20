@@ -17,15 +17,38 @@ function pos(value: number) {
   return ((value - SCALE_MIN) / (SCALE_MAX - SCALE_MIN)) * 100;
 }
 
+/** Bar endpoints: left = low, right = high. Not typical→peak order. */
+function barEnds(typical: number, peak: number) {
+  return { left: Math.min(typical, peak), right: Math.max(typical, peak) };
+}
+
+function IdxEnds({ typical, peak, sort }: { typical: number; peak: number; sort?: DpsSortKey }) {
+  const { left, right } = barEnds(typical, peak);
+  const typicalClass = "text-[var(--gold-2)]";
+  const peakClass = "text-[var(--asmo)]";
+  const muted = "text-[var(--muted)]";
+  const leftClass = left === typical && left !== peak ? typicalClass : left === peak && left !== typical ? peakClass : sort === "peak" ? peakClass : typicalClass;
+  const rightClass = right === typical && right !== peak ? typicalClass : right === peak && right !== typical ? peakClass : sort === "peak" ? peakClass : typicalClass;
+  const leftActive = sort ? (sort === "typical" ? left === typical : left === peak) : true;
+  const rightActive = sort ? (sort === "typical" ? right === typical : right === peak) : true;
+
+  return (
+    <span className="tabular-nums" data-bar-dir="low-to-high" data-bar-left={left} data-bar-right={right}>
+      <span className={sort ? (leftActive ? leftClass : muted) : leftClass}>{left}</span>
+      <span className="mx-1 text-[var(--muted)]">→</span>
+      <span className={sort ? (rightActive ? rightClass : muted) : rightClass}>{right}</span>
+    </span>
+  );
+}
+
 function DamageBand({ typical, peak }: { typical: number; peak: number }) {
-  const lo = Math.min(typical, peak);
-  const hi = Math.max(typical, peak);
+  const { left: lo, right: hi } = barEnds(typical, peak);
   const start = pos(lo);
   const end = pos(hi);
   const width = Math.max(end - start, 2.5);
 
   return (
-    <div className="relative h-5">
+    <div className="relative h-5" data-bar-dir="low-to-high" data-bar-left={lo} data-bar-right={hi}>
       <div className="absolute inset-x-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-white/[0.07]" />
       <div
         className="absolute top-1/2 h-2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#c9a15a,var(--asmo))]"
@@ -117,18 +140,16 @@ export function DpsRanking() {
             </p>
             <h3 className="mt-2 font-[family-name:var(--font-display)] text-lg leading-tight sm:text-2xl">{row.name}</h3>
             <p className="mt-2 text-sm">
-              <span className={sort === "typical" ? "text-[var(--gold-2)]" : "text-[var(--muted)]"}>{row.typical}</span>
-              <span className="mx-1 text-[var(--muted)]">→</span>
-              <span className={sort === "peak" ? "text-[var(--asmo)]" : "text-[var(--muted)]"}>{row.peak}</span>
+              <IdxEnds typical={row.typical} peak={row.peak} sort={sort} />
             </p>
           </article>
         ))}
       </div>
 
       <div className="mb-2 hidden px-[4.5rem] text-[11px] uppercase tracking-[0.14em] text-[var(--muted)] sm:flex">
-        <span>70</span>
+        <span>low {SCALE_MIN}</span>
         <span className="mx-auto">85</span>
-        <span className="ml-auto">100</span>
+        <span className="ml-auto">high {SCALE_MAX}</span>
       </div>
 
       <div className="space-y-3">
@@ -149,10 +170,8 @@ export function DpsRanking() {
                     <h3 className="font-[family-name:var(--font-display)] text-2xl leading-none">{row.name}</h3>
                     <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-[var(--muted)]">{row.tag}</p>
                   </div>
-                  <p className="text-sm tabular-nums">
-                    <span className="text-[var(--gold-2)]">{row.typical}</span>
-                    <span className="mx-1 text-[var(--muted)]">→</span>
-                    <span className="text-[var(--asmo)]">{row.peak}</span>
+                  <p className="text-sm">
+                    <IdxEnds typical={row.typical} peak={row.peak} />
                   </p>
                 </div>
                 <DamageBand typical={row.typical} peak={row.peak} />
@@ -164,10 +183,10 @@ export function DpsRanking() {
       </div>
       <p className="mt-3 text-xs text-[var(--muted)]">
         Integer idx versus the leader at that percentile on this slice, rounded to the nearest integer (0.5 → up).
-        Typical is nDPS P50. Peak is nDPS P90. Deus and Fallen use that same rounding. Not an in-game stat and not a
-        million-DPS claim. Support raw DPS is omitted on this board — not missing from the meter. The gold-to-violet
-        band is the typical-to-peak spread. Brawler sits near Assassin on Snowfield nDPS and is not a launch class.
-        Musphel is Recent 14 / All / the older 09-02→09 week only.
+        Typical is nDPS P50. Peak is nDPS P90. Deus and Fallen use that same rounding. Bars read low → high: left is
+        min(typical, peak), right is max. Not an in-game stat and not a million-DPS claim. Support raw DPS is omitted
+        on this board — not missing from the meter. Gold is typical, violet is peak. Brawler sits near Assassin on
+        Snowfield nDPS and is not a launch class. Musphel is Recent 14 / All / the older 09-02→09 week only.
       </p>
     </div>
   );

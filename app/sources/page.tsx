@@ -111,8 +111,8 @@ export default function SourcesPage() {
             "35–45 farm brackets, 5–8 alt gold figures, named KR goldmine maps",
           ],
           [
-            "NotMeter (notmeter.com) dungeon cache, generated Sept 19, 2026 23:03 UTC",
-            "nDPS vs raw DPS, P75 class sort, sample rules (40 logs, trim 10%, one character = one sample, 200K CP-gap drop), Snowfield / Deus / Fallen Hard this-week (09-16→23) relative order, Musphel Recent 14 / All / older week only (no 09-16→23 weekly shard), combat-rate averages, and the four verified calculator conversions (Power / Destruction / Justice / Wisdom). Cite data paths and the latest pointer (pagesRoot), not a bare /g/…/ directory",
+            "NotMeter (notmeter.com) dungeon cache, generated Sept 19, 2026 23:03 UTC · Scoring v2 · pin 9c13dbd56489c717",
+            "nDPS vs raw DPS, P75 class sort, sample rules (40 logs, trim 10%, one character = one sample, 200K CP-gap drop), Snowfield / Deus / Fallen Hard this-week (09-16→23) relative indexes (low→high bars), Musphel Recent 14 / All / older week only (no 09-16→23 weekly shard), combat-rate averages. Deus Assassin typical idx is 99. Pin generation 9c13dbd56489c717 only — do not mix with other cache gens",
             "A Global week-one DPS number, Brawler as a launch class, Snowfield / Muspel / Fallen as October 5 farms, Musphel as a this-week board, support raw as missing (it is omitted), or their CP-normalized Class Performance score (no A/B/C cells on this snapshot)",
           ],
           [
