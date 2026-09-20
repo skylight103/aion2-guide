@@ -112,8 +112,8 @@ export default function SourcesPage() {
           ],
           [
             "NotMeter (notmeter.com) dungeon cache, generated Sept 19, 2026 23:03 UTC",
-            "nDPS vs raw DPS, P75 class sort, sample rules (40 logs, trim 10%, one character = one sample, 200K CP-gap drop), Snowfield of Sorrow / Deus Hard relative order, combat-rate averages, and the four verified calculator conversions (Power / Destruction / Justice / Wisdom)",
-            "A Global week-one DPS number, Brawler as a launch class, Snowfield / Muspel as October 5 farms, or their CP-normalized Class Performance score (no A/B/C cells on this snapshot)",
+            "nDPS vs raw DPS, P75 class sort, sample rules (40 logs, trim 10%, one character = one sample, 200K CP-gap drop), Snowfield / Deus / Fallen Hard this-week (09-16→23) relative order, Musphel Recent 14 / All / older week only (no 09-16→23 weekly shard), combat-rate averages, and the four verified calculator conversions (Power / Destruction / Justice / Wisdom). Cite data paths and the latest pointer (pagesRoot), not a bare /g/…/ directory",
+            "A Global week-one DPS number, Brawler as a launch class, Snowfield / Muspel / Fallen as October 5 farms, Musphel as a this-week board, support raw as missing (it is omitted), or their CP-normalized Class Performance score (no A/B/C cells on this snapshot)",
           ],
           [
             "KR parse threads (Inven) and A2Power-style logs",

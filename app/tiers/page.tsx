@@ -1,6 +1,13 @@
 import { Callout, DataTable, NextLinks, PageHeader } from "@/components/ui";
 import { DifficultyChart } from "@/components/DifficultyChart";
 import { DpsRanking } from "@/components/DpsRanking";
+import {
+  COMBAT_PROFILE,
+  NOTMETER_CACHE,
+  NOTMETER_CACHE_STAMP,
+  NOTMETER_RESEARCH_STAMP,
+  STAT_CONVERSIONS,
+} from "@/lib/notmeter";
 
 export const metadata = { title: "DPS Tier List and Difficulty" };
 
@@ -10,11 +17,11 @@ export default function TiersPage() {
       <PageHeader
         kicker="Play"
         title="DPS tier list and difficulty"
-        lede="NotMeter dungeon snapshot from September 19, 2026. This is not a Global week-one pick list. Role and difficulty first. The meter can move before launch. NC can retune."
+        lede={`NotMeter dungeon snapshot from ${NOTMETER_RESEARCH_STAMP}. This is not a Global week-one pick list. Role and difficulty first. The meter can move before launch. NC can retune.`}
       />
       <Callout tone="red">
-        Snapshot: September 19, 2026, 23:03 UTC NotMeter cache. Templar, Cleric, and Chanter are not DPS mains. Score
-        them for difficulty and group value, not the parse. Brawler appears on the meter and is KR/TW only.
+        Snapshot: {NOTMETER_CACHE_STAMP} NotMeter cache. Templar, Cleric, and Chanter are not DPS mains. Score them for
+        difficulty and group value, not the parse. Brawler appears on the meter and is KR/TW only.
       </Callout>
       <h2 className="font-[family-name:var(--font-display)] text-3xl">Start here</h2>
       <DataTable
@@ -34,20 +41,25 @@ export default function TiersPage() {
         <a href="https://notmeter.com/" target="_blank" rel="noreferrer">
           NotMeter
         </a>{" "}
-        is a community dungeon meter. Use it for relative order, not a launch DPS target. The current ranker dungeon
-        on this snapshot is Snowfield of Sorrow (Hard). Corrupted Deus Research Base (Hard) is the older high-volume
-        farm. Neither is week one.
+        is a community dungeon meter. Use it for relative order, not a launch DPS target. The current ranker dungeon on
+        this snapshot is Snowfield of Sorrow (Hard). Corrupted Deus Research Base (Hard) is the older high-volume farm.
+        Fallen Deva Castle (Hard) is on the same this-week clock. Muspel’s Grail (Musphel on the meter) is not — it has
+        no weekly shard for 09-16→23. None of these are week one.
       </p>
       <DataTable
         headers={["Rule", "What it means"]}
         rows={[
           [
             "nDPS, not raw",
-            "Default class sort is party-buff-normalized DPS. A lucky Chanter stack no longer buys the screenshot. Raw DPS still exists — Assassin still holds the Snowfield raw max",
+            "Default class sort is party-buff-normalized DPS. A lucky Chanter stack no longer buys the screenshot. Raw DPS still exists — Assassin still holds the Snowfield raw max. Support raw is omitted on our board (not missing from the cache)",
           ],
           [
             "P75 default",
             "Classes sort by the top quartile, not the #1 log. Typical on our chart is P50. Peak is P90. Both are nDPS",
+          ],
+          [
+            "Integer idx",
+            "Typical and peak are nDPS versus the leader at that percentile on the same slice, rounded to the nearest integer (0.5 → up). Deus and Fallen use that same rounding. Snowfield / Deus idx are the September 19 published board",
           ],
           [
             "Verified kills only",
@@ -59,7 +71,11 @@ export default function TiersPage() {
           ],
           [
             "Week clock",
-            "Wednesday 05:00 KST. Cache rebuilds at :00 and :30. An open page polls about every five minutes",
+            "Wednesday 05:00 KST. This week is 09-16→23. Cache rebuilds at :00 and :30. An open page polls about every five minutes. Musphel has no shard for that week — Sorc-led only on Recent 14 / All / the older 09-02→09 week",
+          ],
+          [
+            "Cache URL",
+            "Cite data files or the latest pointer, not a bare /g/…/ directory. That folder 404s. pagesRoot lives on the latest pointer",
           ],
           [
             "Ranker cosmetics",
@@ -68,11 +84,60 @@ export default function TiersPage() {
         ]}
       />
 
+      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Cache files</h2>
+      <p className="text-[var(--muted)]">
+        The September 19, 23:03 UTC snapshot is what this page ranks. The live meter may have moved. Link the files
+        under <code>data/</code> or the latest pointer. A bare <code>/g/…/</code> generation directory 404s — that is
+        not the cache.
+      </p>
+      <DataTable
+        headers={["What", "URL"]}
+        rows={[
+          [
+            "Latest pointer (pagesRoot + revision)",
+            <a key="latest" href={NOTMETER_CACHE.latestPointer} target="_blank" rel="noreferrer">
+              {NOTMETER_CACHE.latestPointer}
+            </a>,
+          ],
+          [
+            "Ranking body",
+            <a key="body" href={NOTMETER_CACHE.rankingBody} target="_blank" rel="noreferrer">
+              {NOTMETER_CACHE.rankingBody}
+            </a>,
+          ],
+          [
+            "Snowfield Hard view",
+            <a key="snow" href={NOTMETER_CACHE.snowfieldView} target="_blank" rel="noreferrer">
+              {NOTMETER_CACHE.snowfieldView}
+            </a>,
+          ],
+          [
+            "Deus Hard view",
+            <a key="deus" href={NOTMETER_CACHE.deusView} target="_blank" rel="noreferrer">
+              {NOTMETER_CACHE.deusView}
+            </a>,
+          ],
+          [
+            "Fallen Hard view",
+            <a key="fallen" href={NOTMETER_CACHE.fallenView} target="_blank" rel="noreferrer">
+              {NOTMETER_CACHE.fallenView}
+            </a>,
+          ],
+          [
+            "Musphel Hard view",
+            <a key="musphel" href={NOTMETER_CACHE.musphelView} target="_blank" rel="noreferrer">
+              {NOTMETER_CACHE.musphelView}
+            </a>,
+          ],
+        ]}
+      />
+
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">PvE DPS ranking</h2>
       <p className="text-[var(--muted)]">
-        Damage-first launch classes only. Content changes the order. On the current ranker dungeon, Sorcerer leads
-        nDPS and Ranger is no longer the median king. On the older Deus farm, Assassin takes the peak back. That
-        split is the update. The September 5 class-care pass is not global.
+        Damage-first launch classes only. Content changes the order. On the current ranker dungeon, Sorcerer leads nDPS
+        and Ranger is no longer the median king. On the older Deus farm, Assassin takes the peak back. Fallen this week
+        is Assassin-led. Musphel is Sorc-led on Recent 14 / All / the older week, and it is not on the this-week strip.
+        That split is the update. The September 5 class-care pass is not global.
       </p>
       <DpsRanking />
 
@@ -82,7 +147,7 @@ export default function TiersPage() {
         rows={[
           [
             "Training Dummy (1 min)",
-            "Website ranking only. No live ranker mark. Gladiator looks much closer to Assassin here because the dummy does not walk. Do not pick a class from it",
+            "Website ranking only. No live ranker mark. Gladiator looks much closer to Assassin here because the dummy does not walk. nDPS is omitted on the dummy — not missing. Do not pick a class from it",
           ],
           [
             "Nightmare",
@@ -90,11 +155,15 @@ export default function TiersPage() {
           ],
           [
             "Chanter / Templar / Cleric",
-            "They show up on the meter. Chanter’s personal nDPS sits near Gladiator once buffs are stripped. That does not make Chanter a DPS main, and it does not replace Cleric",
+            "They show up on the meter. Support raw DPS is omitted here (not missing). Chanter’s personal nDPS sits near Gladiator once buffs are stripped. That does not make Chanter a DPS main, and it does not replace Cleric",
           ],
           [
             "Brawler",
             "On the meter, between Assassin and Gladiator on current Snowfield nDPS. Not on the October 5 roster",
+          ],
+          [
+            "Musphel this week",
+            "No weekly shard for 09-16→23. Dropped from the this-week strip. Sorc-led only on Recent 14 / All / week of 09-02→09",
           ],
           [
             "Class Performance score",
@@ -105,18 +174,12 @@ export default function TiersPage() {
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Combat profile</h2>
       <p className="text-[var(--muted)]">
-        All-time DPS top 100 per class, one best log each, arithmetic mean of personal rates. Independent of the
-        nDPS filter. Use it to see how the class hits, not how hard.
+        All-time DPS top 100 per class, one best log each, arithmetic mean of personal rates. Independent of the nDPS
+        filter. Use it to see how the class hits, not how hard.
       </p>
       <DataTable
         headers={["Class", "Smite", "Perfect", "Crit", "Front", "Back"]}
-        rows={[
-          ["Assassin", "51%", "68%", "88%", "6%", "92%"],
-          ["Ranger", "61%", "83%", "84%", "77%", "17%"],
-          ["Sorcerer", "61%", "68%", "87%", "44%", "13%"],
-          ["Spiritmaster", "57%", "82%", "81%", "66%", "24%"],
-          ["Gladiator", "57%", "81%", "86%", "88%", "6%"],
-        ]}
+        rows={COMBAT_PROFILE.map((row) => [...row])}
       />
       <p className="text-sm text-[var(--muted)]">
         Assassin is a back class. Gladiator is a front class. Ranger is mostly front. Sorcerer leaves many hits
@@ -128,15 +191,7 @@ export default function TiersPage() {
         NotMeter’s calculator only ranks lines with a published damage conversion. Paste from the meter’s “copy my
         stats.” Everything else stays out of that UI until they verify it.
       </p>
-      <DataTable
-        headers={["Line", "Published conversion"]}
-        rows={[
-          ["Power", "+0.1 percentage points Attack Increase per 1"],
-          ["Destruction", "+0.2 percentage points Attack Increase per 1"],
-          ["Justice", "+0.2 percentage points Perfect per 1"],
-          ["Wisdom", "+0.2 percentage points Smite per 1"],
-        ]}
-      />
+      <DataTable headers={["Line", "Published conversion"]} rows={STAT_CONVERSIONS.map((row) => [...row])} />
       <p className="text-sm text-[var(--muted)]">
         Hidden on purpose: Hit, Defense, recast, Combat Speed, element amp, bound soulstone, Penetration. Smite and
         Perfect on bosses are estimates. Crit and Evasion are still in the lab. The full formula lives on{" "}
