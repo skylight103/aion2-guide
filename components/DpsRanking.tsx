@@ -1,112 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { DPS_BOARDS, type DpsContentKey, type DpsSortKey } from "@/lib/notmeter";
 
 const SCALE_MIN = 70;
 const SCALE_MAX = 100;
 
-type SortKey = "typical" | "peak";
-type ContentKey = "snowfield" | "deus";
-
-type ClassRow = {
-  name: string;
-  tag: string;
-  typical: number;
-  peak: number;
-  note: string;
-};
-
-const contents: Record<
-  ContentKey,
-  {
-    label: string;
-    hint: string;
-    classes: readonly ClassRow[];
-  }
-> = {
-  snowfield: {
-    label: "Current ranker",
-    hint: "Snowfield of Sorrow (Hard) · this week · all bosses · all CP · nDPS",
-    classes: [
-      {
-        name: "Sorcerer",
-        tag: "Ranged burst",
-        typical: 100,
-        peak: 100,
-        note: "Leads this board on nDPS. Party-buff-normalized, so it is not a raw-screenshot win. Same glass as always — no HP budget.",
-      },
-      {
-        name: "Spiritmaster",
-        tag: "Ranged pet",
-        typical: 95,
-        peak: 95,
-        note: "High typical, tight band, ping-friendly. Spirits keep uptime while you move. The comfortable ranged start still holds.",
-      },
-      {
-        name: "Ranger",
-        tag: "Ranged physical",
-        typical: 90,
-        peak: 92,
-        note: "Third on nDPS and the largest DPS sample. Tight band — the class that shows up. Aimed Arrow care is not a rewrite.",
-      },
-      {
-        name: "Assassin",
-        tag: "Melee burst",
-        typical: 80,
-        peak: 84,
-        note: "Lowest typical of the four on this dungeon once buffs are stripped. Still posts the raw (un-normalized) max. You pay for backs.",
-      },
-      {
-        name: "Gladiator",
-        tag: "Bruiser",
-        typical: 78,
-        peak: 81,
-        note: "Lowest personal nDPS in a real party. Dummy parses flatter this. Party lifesteal and damage buffs are the payment.",
-      },
-    ],
-  },
-  deus: {
-    label: "Older farm",
-    hint: "Corrupted Deus Research Base (Hard) · this week · all bosses · all CP · nDPS",
-    classes: [
-      {
-        name: "Sorcerer",
-        tag: "Ranged burst",
-        typical: 100,
-        peak: 97,
-        note: "Typical still first. Peak loses to Assassin. Same glass. Do not read this as a week-one door.",
-      },
-      {
-        name: "Assassin",
-        tag: "Melee burst",
-        typical: 98,
-        peak: 100,
-        note: "Peak first on the older high-volume farm. Typical sits on Sorcerer’s shoulder. Phantom Clone care is not global.",
-      },
-      {
-        name: "Ranger",
-        tag: "Ranged physical",
-        typical: 93,
-        peak: 93,
-        note: "Middle of the pack, huge sample. The class that shows up when the board is not a brand-new ranker dungeon.",
-      },
-      {
-        name: "Spiritmaster",
-        tag: "Ranged pet",
-        typical: 91,
-        peak: 95,
-        note: "Typical sits with Gladiator. Peak climbs. Still the comfortable ranged start if you are not chasing this farm’s ceiling.",
-      },
-      {
-        name: "Gladiator",
-        tag: "Bruiser",
-        typical: 91,
-        peak: 91,
-        note: "In the pack on personal nDPS here, still not the reason you bring one. Buffs pay the slot.",
-      },
-    ],
-  },
-};
+const CONTENT_CHIPS: readonly [DpsContentKey, string][] = [
+  ["snowfield", "Current ranker"],
+  ["deus", "Older farm"],
+  ["fallen", "Fallen"],
+  ["musphel", "Musphel (not this week)"],
+];
 
 function pos(value: number) {
   return ((value - SCALE_MIN) / (SCALE_MAX - SCALE_MIN)) * 100;
@@ -163,9 +68,9 @@ function Chip({
 }
 
 export function DpsRanking() {
-  const [content, setContent] = useState<ContentKey>("snowfield");
-  const [sort, setSort] = useState<SortKey>("typical");
-  const pack = contents[content];
+  const [content, setContent] = useState<DpsContentKey>("snowfield");
+  const [sort, setSort] = useState<DpsSortKey>("typical");
+  const pack = DPS_BOARDS[content];
   const rows = [...pack.classes].sort((a, b) => b[sort] - a[sort] || b.peak - a.peak || b.typical - a.typical);
   const podium = rows.slice(0, 3);
 
@@ -173,12 +78,7 @@ export function DpsRanking() {
     <div className="mt-5">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-2">
-          {(
-            [
-              ["snowfield", "Current ranker"],
-              ["deus", "Older farm"],
-            ] as const
-          ).map(([key, label]) => (
+          {CONTENT_CHIPS.map(([key, label]) => (
             <Chip key={key} active={content === key} onClick={() => setContent(key)}>
               {label}
             </Chip>
@@ -263,9 +163,11 @@ export function DpsRanking() {
         ))}
       </div>
       <p className="mt-3 text-xs text-[var(--muted)]">
-        Relative index versus the leader at that percentile on this slice. Typical is nDPS P50. Peak is nDPS P90. Not
-        an in-game stat and not a million-DPS claim. The gold-to-violet band is the typical-to-peak spread. Brawler
-        sits near Assassin on the meter and is not a launch class.
+        Integer idx versus the leader at that percentile on this slice, rounded to the nearest integer (0.5 → up).
+        Typical is nDPS P50. Peak is nDPS P90. Deus and Fallen use that same rounding. Not an in-game stat and not a
+        million-DPS claim. Support raw DPS is omitted on this board — not missing from the meter. The gold-to-violet
+        band is the typical-to-peak spread. Brawler sits near Assassin on Snowfield nDPS and is not a launch class.
+        Musphel is Recent 14 / All / the older 09-02→09 week only.
       </p>
     </div>
   );
