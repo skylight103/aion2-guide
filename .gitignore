@@ -5,6 +5,7 @@ out
 *.log
 .DS_Store
 .env*
+!.env.example
 *.tsbuildinfo
 tmp-kanon
 
