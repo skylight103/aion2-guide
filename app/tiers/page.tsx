@@ -10,11 +10,11 @@ export default function TiersPage() {
       <PageHeader
         kicker="Play"
         title="DPS tier list and difficulty"
-        lede="NotMeter dungeon snapshot from September 19, 2026 — not a Global week-one pick list. Role and difficulty first. The meter can move before launch. NC can retune."
+        lede="NotMeter dungeon snapshot from September 19, 2026. This is not a Global week-one pick list. Role and difficulty first. The meter can move before launch. NC can retune."
       />
       <Callout tone="red">
-        Snapshot: September 19, 2026, 23:03 UTC NotMeter cache. Templar, Cleric, and Chanter are not DPS mains. They
-        are scored for difficulty and group value, not the parse. Brawler appears on the meter and is KR/TW only.
+        Snapshot: September 19, 2026, 23:03 UTC NotMeter cache. Templar, Cleric, and Chanter are not DPS mains. Score
+        them for difficulty and group value, not the parse. Brawler appears on the meter and is KR/TW only.
       </Callout>
       <h2 className="font-[family-name:var(--font-display)] text-3xl">Start here</h2>
       <DataTable
@@ -34,9 +34,9 @@ export default function TiersPage() {
         <a href="https://notmeter.com/" target="_blank" rel="noreferrer">
           NotMeter
         </a>{" "}
-        is a community dungeon meter. We use it for relative order, not for a launch DPS target. The current ranker
-        dungeon on this snapshot is Snowfield of Sorrow (Hard). Corrupted Deus Research Base (Hard) is the older
-        high-volume farm. Neither is week one.
+        is a community dungeon meter. Use it for relative order, not a launch DPS target. The current ranker dungeon
+        on this snapshot is Snowfield of Sorrow (Hard). Corrupted Deus Research Base (Hard) is the older high-volume
+        farm. Neither is week one.
       </p>
       <DataTable
         headers={["Rule", "What it means"]}
@@ -72,7 +72,7 @@ export default function TiersPage() {
       <p className="text-[var(--muted)]">
         Damage-first launch classes only. Content changes the order. On the current ranker dungeon, Sorcerer leads
         nDPS and Ranger is no longer the median king. On the older Deus farm, Assassin takes the peak back. That
-        split is the update. The Sept 5 class-care pass is not global.
+        split is the update. The September 5 class-care pass is not global.
       </p>
       <DpsRanking />
 
@@ -106,7 +106,7 @@ export default function TiersPage() {
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Combat profile</h2>
       <p className="text-[var(--muted)]">
         All-time DPS top 100 per class, one best log each, arithmetic mean of personal rates. Independent of the
-        nDPS filter. Use it to see how the class actually hits, not how hard.
+        nDPS filter. Use it to see how the class hits, not how hard.
       </p>
       <DataTable
         headers={["Class", "Smite", "Perfect", "Crit", "Front", "Back"]}
@@ -119,7 +119,7 @@ export default function TiersPage() {
         ]}
       />
       <p className="text-sm text-[var(--muted)]">
-        Assassin is a back class. Gladiator is a front class. Ranger is mostly front. Sorcerer leaves a lot of hits
+        Assassin is a back class. Gladiator is a front class. Ranger is mostly front. Sorcerer leaves many hits
         unpositioned. Spiritmaster can take rears when the fight allows it.
       </p>
 
@@ -139,7 +139,7 @@ export default function TiersPage() {
       />
       <p className="text-sm text-[var(--muted)]">
         Hidden on purpose: Hit, Defense, recast, Combat Speed, element amp, bound soulstone, Penetration. Smite and
-        Perfect on bosses are estimates. Crit and Evasion are still in the lab. Full formula lives on{" "}
+        Perfect on bosses are estimates. Crit and Evasion are still in the lab. The full formula lives on{" "}
         <a href="/combat">Combat</a>.
       </p>
 

@@ -5,18 +5,18 @@ const directory = [
   { href: "/alts", section: "Start here", title: "Barracks and Energy", blurb: "Stamina, play-count, and why three alts." },
   { href: "/plan", section: "Start here", title: "Week-One Plan", blurb: "Unlock energy, stand up the barracks, spend cubes." },
   { href: "/roster", section: "Start here", title: "Current Roster", blurb: "Mains, alts, and who is covering each role." },
-  { href: "/know", section: "Start here", title: "What You Need to Know", blurb: "Dates, platforms, factions, money, KR vs Global." },
+  { href: "/know", section: "Start here", title: "What You Need to Know", blurb: "Dates, platforms, factions, money, and KR vs Global." },
   { href: "/classes", section: "Play", title: "Classes", blurb: "All eight launch classes and who should pick them." },
-  { href: "/tiers", section: "Play", title: "DPS Tier List", blurb: "Role first, then the current NotMeter nDPS snapshot." },
+  { href: "/tiers", section: "Play", title: "DPS Tier List", blurb: "Role first, then the September 19 NotMeter nDPS snapshot." },
   { href: "/combat", section: "Play", title: "Combat", blurb: "How fights work: PvE, PvP, macros, farming." },
   { href: "/gear", section: "Systems", title: "Gear", blurb: "Story greens to KR BiS: slots, imprint, Potential, succession." },
   { href: "/activities", section: "Systems", title: "Activities", blurb: "Story, dungeons, Abyss, and capped rewards." },
   { href: "/map", section: "Systems", title: "Week-one map", blurb: "Pan and zoom Verteron and Altgard with our named pins." },
   { href: "/currencies", section: "Systems", title: "Currencies", blurb: "Kina, Quna, Odyle Energy, Membership." },
   { href: "/crafting", section: "Systems", title: "Crafting", blurb: "Essence Extraction, five benches, and how craft becomes the weapon." },
-  { href: "/tips", section: "Reference", title: "Essential Tips", blurb: "Do and don't for launch week." },
-  { href: "/faq", section: "Reference", title: "Common Questions", blurb: "Short answers." },
-  { href: "/sources", section: "Reference", title: "Sources", blurb: "What is confirmed vs KR/TW." },
+  { href: "/tips", section: "Reference", title: "Essential Tips", blurb: "Do and do not for launch week." },
+  { href: "/faq", section: "Reference", title: "Common Questions", blurb: "Short answers first." },
+  { href: "/sources", section: "Reference", title: "Sources", blurb: "Confirmed global vs KR/TW." },
 ];
 
 export default function HomePage() {
@@ -33,10 +33,10 @@ export default function HomePage() {
         </p>
       </section>
       <Callout tone="red">
-        Global is a <strong>different service</strong> from KR/TW. You cannot play with Korea/Taiwan friends on this launch.
+        Global is a <strong>different service</strong> from KR/TW. You cannot play with Korea or Taiwan friends on this launch.
       </Callout>
       <Callout>
-        Researched September 19, 2026. Confirmed global facts are separated from Korea/Taiwan live systems that may change before or after October 5.
+        Researched September 19, 2026. Confirmed global facts sit apart from Korea/Taiwan live systems. Those systems can still move before or after October 5.
       </Callout>
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Open a page</h2>
@@ -60,7 +60,7 @@ export default function HomePage() {
         rows={[
           [
             "Launch Scale Test",
-            "September 17–18, 2026 — done. Wiped. Cap 37. Shop, Quna, and trade were off. Steam: uninstall the playtest before Early Access / Advanced Access",
+            "Done. September 17–18, 2026. Wiped. Cap 37. Shop, Quna, and trade were off. Steam: uninstall the playtest before Early Access / Advanced Access",
           ],
           ["Founder's Early Access / Advanced Access", "September 30–October 4, 2026 — pack owners only"],
           ["Global F2P launch", "Monday October 5, 2026 — PC via Steam and PURPLE, Windows only, NA / SA / EU / Asia"],

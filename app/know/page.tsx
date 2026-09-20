@@ -8,7 +8,7 @@ export default function KnowPage() {
       <PageHeader
         kicker="Start here"
         title="What you need to know"
-        lede="Read this before you copy any Korea guide, buy a pack, or lock a faction."
+        lede="Read this before you copy a Korea guide, buy a pack, or lock a faction."
       />
       <h2 className="font-[family-name:var(--font-display)] text-3xl">The three dates that matter</h2>
       <DataTable
@@ -32,7 +32,7 @@ export default function KnowPage() {
         ]}
       />
       <p className="text-[var(--muted)]">
-        NC has not published the exact server-open clock time. Do not trust a random Discord screenshot for login hour.
+        NC has not published the server-open clock. Do not trust a Discord screenshot for login hour.
       </p>
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Platforms and regions</h2>
@@ -60,8 +60,8 @@ export default function KnowPage() {
         </div>
       </div>
       <ul className="list-disc space-y-2 pl-5 text-[var(--muted)]">
-        <li>Pick server + faction before login and create characters together.</li>
-        <li>KR/TW reports faction create locks around ~55% — coordination warning only, not a global rule.</li>
+        <li>Pick server and faction before login, then create characters together.</li>
+        <li>KR/TW reports faction create locks around ~55%. Coordination warning only, not a global rule.</li>
         <li>Cross-server matching is NC intent, not a tested global fact.</li>
       </ul>
 
@@ -86,12 +86,12 @@ export default function KnowPage() {
       />
       <Callout>
         One Founder&apos;s Pack per account. Pick Standard, Deluxe, or Ultimate once. You can level and clear
-        content without paying. Full player-economy access sits behind Membership.
+        content without paying. Membership is what unlocks the full player economy.
       </Callout>
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">KR vs Global</h2>
       <p className="text-[var(--muted)]">
-        Global is a different service, not a Season 3 copy. Use KR for loops. Use this table for what NC has already
+        Global is a different service, not a Season 3 copy. Use Korea for loops. Use this table for what NC has already
         changed for the West.
       </p>
       <DataTable
