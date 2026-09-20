@@ -1,13 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { DPS_BOARDS, type DpsContentKey, type DpsSortKey } from "@/lib/notmeter";
 
-const SCALE_MIN = 70;
+const SCALE_MIN = 0;
 const SCALE_MAX = 100;
-/** Inset the 70–100 domain so a 100 marker/band stays on the rail. */
-const TRACK_PAD_PCT = 4;
-const MIN_BAND_PCT = 2.5;
+/** Half of size-3.5 so a 0/100 marker center stays on the rail. */
+const MARKER_HALF_PX = 7;
 
 const CONTENT_CHIPS: readonly [DpsContentKey, string][] = [
   ["snowfield", "Current ranker"],
@@ -17,21 +16,15 @@ const CONTENT_CHIPS: readonly [DpsContentKey, string][] = [
 ];
 
 function pos(value: number) {
-  const t = (value - SCALE_MIN) / (SCALE_MAX - SCALE_MIN);
-  return TRACK_PAD_PCT + t * (100 - TRACK_PAD_PCT * 2);
+  return ((value - SCALE_MIN) / (SCALE_MAX - SCALE_MIN)) * 100;
 }
 
-/** Percent box for the gold→violet band. Zero-width (lo===hi) is centered. */
-function bandBox(lo: number, hi: number) {
-  const start = pos(lo);
-  const end = pos(hi);
-  const span = end - start;
-  if (span >= MIN_BAND_PCT) {
-    return { left: start, width: span };
-  }
-  const mid = (start + end) / 2;
-  const left = Math.min(Math.max(mid - MIN_BAND_PCT / 2, 0), 100 - MIN_BAND_PCT);
-  return { left, width: MIN_BAND_PCT };
+/** Center at idx, clamped so the marker box never crosses 0% or 100%. */
+function markerStyle(value: number): CSSProperties {
+  return {
+    left: `clamp(${MARKER_HALF_PX}px, ${pos(value)}%, calc(100% - ${MARKER_HALF_PX}px))`,
+    transform: "translate(-50%, -50%)",
+  };
 }
 
 /** Bar endpoints: left = low, right = high. Not typical→peak order. */
@@ -58,34 +51,72 @@ function IdxEnds({ typical, peak, sort }: { typical: number; peak: number; sort?
   );
 }
 
+function EndTick({ value, tone }: { value: number; tone: "typical" | "peak" }) {
+  const fill =
+    tone === "typical"
+      ? "bg-[var(--gold-2)] shadow-[0_0_10px_rgba(240,213,154,0.45)]"
+      : "bg-[var(--asmo)] shadow-[0_0_10px_rgba(155,140,255,0.45)]";
+  return (
+    <span
+      className={`absolute top-1/2 size-3.5 rounded-full border-2 border-[#12151e] ${fill}`}
+      style={markerStyle(value)}
+      data-tick={tone}
+    />
+  );
+}
+
+function EqualPoint({ value }: { value: number }) {
+  return (
+    <span
+      className="absolute top-1/2 size-3.5 bg-[linear-gradient(135deg,#c9a15a,var(--asmo))] shadow-[0_0_10px_rgba(240,213,154,0.45)]"
+      style={{
+        ...markerStyle(value),
+        clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+      }}
+      data-bar-shape="point"
+    />
+  );
+}
+
 function DamageBand({ typical, peak }: { typical: number; peak: number }) {
   const { left: lo, right: hi } = barEnds(typical, peak);
-  const band = bandBox(lo, hi);
+  const equal = lo === hi;
 
   return (
-    <div className="relative h-5" data-bar-dir="low-to-high" data-bar-left={lo} data-bar-right={hi}>
+    <div
+      className="relative h-5"
+      data-bar-dir="low-to-high"
+      data-bar-left={lo}
+      data-bar-right={hi}
+      data-bar-shape={equal ? "point" : "range"}
+      title={`Typical ${typical} · Peak ${peak}`}
+    >
       <div className="absolute inset-x-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-white/[0.07]" />
-      <div
-        className="absolute top-1/2 h-2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#c9a15a,var(--asmo))]"
-        style={{ left: `${band.left}%`, width: `${band.width}%` }}
-      />
-      <span
-        className="absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#12151e] bg-[var(--gold-2)] shadow-[0_0_10px_rgba(240,213,154,0.45)]"
-        style={{ left: `${pos(typical)}%` }}
-      />
-      <span
-        className="absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#12151e] bg-[var(--asmo)] shadow-[0_0_10px_rgba(155,140,255,0.45)]"
-        style={{ left: `${pos(peak)}%` }}
-      />
+      {!equal && (
+        <div
+          className="absolute top-1/2 h-2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#c9a15a,var(--asmo))]"
+          style={{ left: `${pos(lo)}%`, width: `${pos(hi) - pos(lo)}%` }}
+        />
+      )}
+      {equal ? (
+        <EqualPoint value={lo} />
+      ) : (
+        <>
+          <EndTick value={typical} tone="typical" />
+          <EndTick value={peak} tone="peak" />
+        </>
+      )}
     </div>
   );
 }
 
 function ScaleAxis() {
   const ticks = [
-    { value: SCALE_MIN, label: `low ${SCALE_MIN}`, align: "start" as const },
-    { value: 85, label: "85", align: "center" as const },
-    { value: SCALE_MAX, label: `high ${SCALE_MAX}`, align: "end" as const },
+    { value: 0, label: "0", align: "start" as const },
+    { value: 25, label: "25", align: "center" as const },
+    { value: 50, label: "50", align: "center" as const },
+    { value: 75, label: "75", align: "center" as const },
+    { value: 100, label: "100", align: "end" as const },
   ];
   const shift = { start: "", center: "-translate-x-1/2", end: "-translate-x-full" };
 
@@ -235,10 +266,10 @@ export function DpsRanking() {
       <p className="mt-3 text-xs text-[var(--muted)]">
         Integer idx versus the leader at that percentile on this slice, rounded to the nearest integer (0.5 → up).
         Typical is nDPS P50. Peak is nDPS P90. Deus and Fallen use that same rounding. Bars read low → high: left is
-        min(typical, peak), right is max. The 70–100 rail is inset so a 100 marker stays on the track. Not an in-game
-        stat and not a million-DPS claim. Support raw DPS is omitted on this board — not missing from the meter. Gold
-        is typical, violet is peak. Brawler sits near Assassin on Snowfield nDPS and is not a launch class. Musphel is
-        Recent 14 / All / the older 09-02→09 week only.
+        min(typical, peak), right is max. The rail is 0–100 idx. Equal typical and peak is a point on that rail, not a
+        bar. Not an in-game stat and not a million-DPS claim. Support raw DPS is omitted on this board — not missing
+        from the meter. Gold is typical, violet is peak. Brawler sits near Assassin on Snowfield nDPS and is not a
+        launch class. Musphel is Recent 14 / All / the older 09-02→09 week only.
       </p>
     </div>
   );
