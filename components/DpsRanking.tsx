@@ -5,6 +5,9 @@ import { DPS_BOARDS, type DpsContentKey, type DpsSortKey } from "@/lib/notmeter"
 
 const SCALE_MIN = 70;
 const SCALE_MAX = 100;
+/** Inset the 70–100 domain so a 100 marker/band stays on the rail. */
+const TRACK_PAD_PCT = 4;
+const MIN_BAND_PCT = 2.5;
 
 const CONTENT_CHIPS: readonly [DpsContentKey, string][] = [
   ["snowfield", "Current ranker"],
@@ -14,7 +17,21 @@ const CONTENT_CHIPS: readonly [DpsContentKey, string][] = [
 ];
 
 function pos(value: number) {
-  return ((value - SCALE_MIN) / (SCALE_MAX - SCALE_MIN)) * 100;
+  const t = (value - SCALE_MIN) / (SCALE_MAX - SCALE_MIN);
+  return TRACK_PAD_PCT + t * (100 - TRACK_PAD_PCT * 2);
+}
+
+/** Percent box for the gold→violet band. Zero-width (lo===hi) is centered. */
+function bandBox(lo: number, hi: number) {
+  const start = pos(lo);
+  const end = pos(hi);
+  const span = end - start;
+  if (span >= MIN_BAND_PCT) {
+    return { left: start, width: span };
+  }
+  const mid = (start + end) / 2;
+  const left = Math.min(Math.max(mid - MIN_BAND_PCT / 2, 0), 100 - MIN_BAND_PCT);
+  return { left, width: MIN_BAND_PCT };
 }
 
 /** Bar endpoints: left = low, right = high. Not typical→peak order. */
@@ -43,16 +60,14 @@ function IdxEnds({ typical, peak, sort }: { typical: number; peak: number; sort?
 
 function DamageBand({ typical, peak }: { typical: number; peak: number }) {
   const { left: lo, right: hi } = barEnds(typical, peak);
-  const start = pos(lo);
-  const end = pos(hi);
-  const width = Math.max(end - start, 2.5);
+  const band = bandBox(lo, hi);
 
   return (
     <div className="relative h-5" data-bar-dir="low-to-high" data-bar-left={lo} data-bar-right={hi}>
       <div className="absolute inset-x-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-white/[0.07]" />
       <div
         className="absolute top-1/2 h-2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#c9a15a,var(--asmo))]"
-        style={{ left: `${start}%`, width: `${width}%` }}
+        style={{ left: `${band.left}%`, width: `${band.width}%` }}
       />
       <span
         className="absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#12151e] bg-[var(--gold-2)] shadow-[0_0_10px_rgba(240,213,154,0.45)]"
@@ -62,6 +77,41 @@ function DamageBand({ typical, peak }: { typical: number; peak: number }) {
         className="absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#12151e] bg-[var(--asmo)] shadow-[0_0_10px_rgba(155,140,255,0.45)]"
         style={{ left: `${pos(peak)}%` }}
       />
+    </div>
+  );
+}
+
+function ScaleAxis() {
+  const ticks = [
+    { value: SCALE_MIN, label: `low ${SCALE_MIN}`, align: "start" as const },
+    { value: 85, label: "85", align: "center" as const },
+    { value: SCALE_MAX, label: `high ${SCALE_MAX}`, align: "end" as const },
+  ];
+  const shift = { start: "", center: "-translate-x-1/2", end: "-translate-x-full" };
+
+  return (
+    <div
+      className="relative h-5 min-w-0 flex-1 text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]"
+      aria-hidden
+    >
+      {ticks.map((tick) => (
+        <span
+          key={tick.value}
+          className={`absolute top-0 whitespace-nowrap ${shift[tick.align]}`}
+          style={{ left: `${pos(tick.value)}%` }}
+        >
+          {tick.label}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ScaleRow() {
+  return (
+    <div className="flex gap-4 px-4">
+      <span className="w-10 shrink-0" aria-hidden />
+      <ScaleAxis />
     </div>
   );
 }
@@ -146,10 +196,8 @@ export function DpsRanking() {
         ))}
       </div>
 
-      <div className="mb-2 hidden px-[4.5rem] text-[11px] uppercase tracking-[0.14em] text-[var(--muted)] sm:flex">
-        <span>low {SCALE_MIN}</span>
-        <span className="mx-auto">85</span>
-        <span className="ml-auto">high {SCALE_MAX}</span>
+      <div className="mb-2">
+        <ScaleRow />
       </div>
 
       <div className="space-y-3">
@@ -181,12 +229,16 @@ export function DpsRanking() {
           </article>
         ))}
       </div>
+      <div className="mt-2">
+        <ScaleRow />
+      </div>
       <p className="mt-3 text-xs text-[var(--muted)]">
         Integer idx versus the leader at that percentile on this slice, rounded to the nearest integer (0.5 → up).
         Typical is nDPS P50. Peak is nDPS P90. Deus and Fallen use that same rounding. Bars read low → high: left is
-        min(typical, peak), right is max. Not an in-game stat and not a million-DPS claim. Support raw DPS is omitted
-        on this board — not missing from the meter. Gold is typical, violet is peak. Brawler sits near Assassin on
-        Snowfield nDPS and is not a launch class. Musphel is Recent 14 / All / the older 09-02→09 week only.
+        min(typical, peak), right is max. The 70–100 rail is inset so a 100 marker stays on the track. Not an in-game
+        stat and not a million-DPS claim. Support raw DPS is omitted on this board — not missing from the meter. Gold
+        is typical, violet is peak. Brawler sits near Assassin on Snowfield nDPS and is not a launch class. Musphel is
+        Recent 14 / All / the older 09-02→09 week only.
       </p>
     </div>
   );
