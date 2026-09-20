@@ -4,8 +4,8 @@ export const metadata = { title: "Common Questions" };
 
 const faqs = [
   ["Can I play with Korea / Taiwan friends?", "No. Different service since November 19, 2025."],
-  ["When does it come out?", "October 5, 2026 on PC. Advance Access Sep 30–Oct 4. Scale Test Sep 17–18, wiped."],
-  ["What time do servers open?", "Not published as of September 6, 2026."],
+  ["When does it come out?", "Monday October 5, 2026 on PC (Steam + PURPLE, Windows). Early Access / Advanced Access Sep 30–Oct 4. Launch Scale Test Sep 17–18 is done and wiped."],
+  ["What time do servers open?", "Not published as of September 19, 2026."],
   ["Do I need a Founder's Pack?", "No. Gameplay is free on October 5. Founders use the five days to finish the barracks."],
   ["How many classes?", "Eight. Brawler is KR/TW only."],
   ["When does stamina / Odyle Energy start?", "KR tistory: after the Breeze Boutique (산들바람 상회) quest around 22–23. Confirm the bar in-client."],

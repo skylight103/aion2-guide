@@ -36,7 +36,7 @@ export default function HomePage() {
         Global is a <strong>different service</strong> from KR/TW. You cannot play with Korea/Taiwan friends on this launch.
       </Callout>
       <Callout>
-        Researched September 6, 2026. Confirmed global facts are separated from Korea/Taiwan live systems that may change before or after October 5.
+        Researched September 19, 2026. Confirmed global facts are separated from Korea/Taiwan live systems that may change before or after October 5.
       </Callout>
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Open a page</h2>
@@ -58,16 +58,31 @@ export default function HomePage() {
       <DataTable
         headers={["Item", "Current status"]}
         rows={[
-          ["Launch Scale Test", "September 17–18, 2026 — free, progress wiped"],
-          ["Founder's Advance Access", "September 30–October 4, 2026 — pack owners only"],
-          ["Global F2P launch", "October 5, 2026 — PC via Steam and PURPLE"],
+          [
+            "Launch Scale Test",
+            "September 17–18, 2026 — done. Wiped. Cap 37. Shop, Quna, and trade were off. Steam: uninstall the playtest before Early Access / Advanced Access",
+          ],
+          ["Founder's Early Access / Advanced Access", "September 30–October 4, 2026 — pack owners only"],
+          ["Global F2P launch", "Monday October 5, 2026 — PC via Steam and PURPLE, Windows only, NA / SA / EU / Asia"],
+          ["Founder's Packs", "$24.99 / $49.99 / $99.99. One pack per account"],
           ["Price", "Free to play. Optional $15/month Membership gates the market and Kina↔Quna exchange"],
           ["Launch classes", "8: Templar, Gladiator, Assassin, Ranger, Sorcerer, Spiritmaster, Cleric, Chanter"],
-          ["Not at global launch", "Brawler (KR/TW only). No confirmed global mobile or console"],
           ["Factions", "Elyos and Asmodian. Server choice and faction are hard to undo"],
           ["Hardcore barracks", "1 main + 3 alts to the energy gate, then cubes"],
           ["Cube Kina table", "Livestream: 0–83 plays 100%, 147+ plays 20%"],
-          ["Exact launch hour", "Not published as of September 6, 2026"],
+        ]}
+      />
+
+      <h2 className="mt-10 font-[family-name:var(--font-display)] text-3xl">On hold</h2>
+      <DataTable
+        headers={["Hold", "Status"]}
+        rows={[
+          ["Unlock clock", "Unknown. Not published as of September 19, 2026"],
+          ["Servers", "Unknown. Final world names are unpublished"],
+          ["KR Chapter 1 / Brawler", "Not global day one. Brawler stays KR/TW only"],
+          ["Dungeon size", "Unresolved. Jun 4/8 vs livestream 5/10. Read the door"],
+          ["Console / mobile", "None for this launch. PC Windows only"],
+          ["KR → global transfer", "None. Different service since November 19, 2025"],
         ]}
       />
 

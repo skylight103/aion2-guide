@@ -8,15 +8,36 @@ export default function SourcesPage() {
       <PageHeader
         kicker="Reference"
         title="Sources and confidence"
-        lede="Researched September 6, 2026; NotMeter dungeon cache added September 19. Primary weight goes to NC, Steam, and the official livestream UI. KR/TW explains systems, not global numbers."
+        lede="Researched September 19, 2026 (includes the NotMeter dungeon cache). Primary weight goes to NC, Steam, and the official livestream UI. KR/TW explains systems, not global numbers."
       />
       <DataTable
         headers={["Source", "What it supports"]}
         rows={[
-          ["Steam — AION 2", "PC launch, current marketing copy, party-size marketing conflict"],
-          ["NC Gamescom 2026", "October 5 launch, Scale Test, Advance Access, Steam + PURPLE"],
-          ["NC July 8, 2026 monetization notice", "F2P, Kina, Quna, $15 Membership gates market + exchange"],
-          ["NC August 7, 2026 global livestream", "5-man dungeons, first raid 10, 10v10 stats normalized, PvP flag outside Abyss, four character slots, pet cap 5→3, five hubs with no region lock, 30-day Membership on every Founder pack, pack cosmetics stay off the shop"],
+          ["Steam — AION 2", "PC launch, Windows client, current marketing copy, party-size marketing conflict"],
+          [
+            "NC June 5, 2026 Summer Game Fest",
+            "Historical only: a September 2026 global window on Steam + PURPLE, NA / SA / EU / Asia, and 4-man dungeons / 8-man raids. Superseded by the October 5 date",
+          ],
+          [
+            "NC July 8, 2026 monetization notice",
+            "F2P, Kina, Quna, $15 Membership gates market + exchange",
+          ],
+          [
+            "NC July 22, 2026 Founder's Pack notice",
+            "Standard $24.99, Deluxe $49.99, Ultimate $99.99. One pack per account. Five days of Early Access from September 30",
+          ],
+          [
+            "NC August 7, 2026 global livestream",
+            "5-man dungeons, first raid 10, 10v10 stats normalized, PvP flag outside Abyss, four character slots, pet cap 5→3, five hubs with no region lock, 30-day Membership on every Founder pack, pack cosmetics stay off the shop",
+          ],
+          [
+            "NC Gamescom ONL August 25, 2026",
+            "Monday October 5 launch on PC (Steam + PURPLE) in NA / SA / EU / Asia. LST Sep 17–18. Founder's Early Access Sep 30–Oct 4",
+          ],
+          [
+            "NC Launch Scale Test notice",
+            "LST Sep 17–18 done. Wipe. Cap 37. Shop, Quna, and trade off. Steam: uninstall the playtest before Advanced Access. PURPLE: no extra step",
+          ],
           ["Official livestream UI", "Cumulative Play Reward Adjustment table: 0–83 = 100% cube Kina, down to 20% at 147+"],
           ["NC Membership language", "Odyle Energy exists globally; members get more capacity and extra cube selections"],
           ["Current global coverage", "Eight-class launch roster. Brawler is KR/TW only"],
@@ -230,12 +251,12 @@ export default function SourcesPage() {
       <DataTable
         headers={["Conflict", "Working read"]}
         rows={[
-          ["Expedition party size 4 vs 5 / 10", "Plan 5, read the UI, sit one if the door says 4"],
+          ["Expedition party size 4 vs 5 / 10", "Unresolved. Jun SGF said 4 / 8. Livestream and Steam say 5 / 10. Plan 5, read the UI, sit one if the door says 4"],
           ["Livestream 0–83 vs KR May ≤84", "Nearly the same ladder, off by one. Prefer the livestream table. 84 is 80% there, 100% on the KR May notes"],
           ["Per-server play-count: realm vs barracks", "Plan as account-on-realm. Confirm the counter in-client"],
           ["Energy cap 560 vs 840, regen 10 vs 15 / 3 hours", "Same KR system, two wallets. F2P is 10 / 3 hours and cap 560. Membership is +50% (15 / 3 hours, cap 840). Global confirms more capacity; those exact ticks are unpublished"],
           ["Gladiator as DPS, bruiser, or off-tank", "Bruiser DPS. Templar is the main tank"],
-          ['Some outlets still say "September launch"', "That window moved to October 5"],
+          ['Some outlets still say "September launch"', "Jun 5, 2026 SGF window. Historical only. Launch is Monday October 5"],
           ["Atlas 10 Verteron forts vs aion2hub 13–14 named garrisons vs aion2t 100+", "Different layers. We pin the named aion2hub list on in-game marker spots. Atlas dots are unlabeled. aion2t is a KR dump, not week-one"],
         ]}
       />
