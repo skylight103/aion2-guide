@@ -1,24 +1,25 @@
 export const NOTMETER_RESEARCH_STAMP = "September 19, 2026";
 export const NOTMETER_CACHE_STAMP = "September 19, 2026, 23:03 UTC";
 
+/** Scoring v2 pack. Do not mix with redesign-absolutes gen 241c329b01d6dcd1. */
+export const NOTMETER_SCORING_PACK = "Scoring v2";
+export const NOTMETER_PIN_GEN = "9c13dbd56489c717";
+
 /** Weekly shard this snapshot treats as "this week" (Wed 05:00 KST). */
 export const THIS_WEEK_LABEL = "09-16→23";
 
 /**
- * NotMeter serves ranking bodies from GitHub Pages artifacts.
- * `pagesRoot` is `https://notmeter.com/g/<generation>` — that directory 404s.
- * Cite the data files under it, or the latest pointer that names `pagesRoot`.
+ * NotMeter ranking files for the Scoring v2 pin only.
+ * Cite these data paths — not a bare `/g/…/` directory, and not the live
+ * latest pointer (that can name a different generation).
  */
 export const NOTMETER_CACHE = {
-  latestPointer: "https://notmeter.com/data/client/notmeter-ranking-latest.json",
-  rankingBody: "https://notmeter.com/g/9c13dbd56489c717/data/notmeter-ranking.json.gz",
-  snowfieldView: "https://notmeter.com/g/9c13dbd56489c717/data/views/sorrow-snowfield-hard.json.gz",
-  deusView: "https://notmeter.com/g/9c13dbd56489c717/data/views/deus-research-hard.json.gz",
-  fallenView: "https://notmeter.com/g/9c13dbd56489c717/data/views/fallen-deva-hard.json.gz",
-  musphelView: "https://notmeter.com/g/9c13dbd56489c717/data/views/musphel-hard.json.gz",
+  rankingBody: `https://notmeter.com/g/${NOTMETER_PIN_GEN}/data/notmeter-ranking.json.gz`,
+  snowfieldView: `https://notmeter.com/g/${NOTMETER_PIN_GEN}/data/views/sorrow-snowfield-hard.json.gz`,
+  deusView: `https://notmeter.com/g/${NOTMETER_PIN_GEN}/data/views/deus-research-hard.json.gz`,
+  fallenView: `https://notmeter.com/g/${NOTMETER_PIN_GEN}/data/views/fallen-deva-hard.json.gz`,
+  musphelView: `https://notmeter.com/g/${NOTMETER_PIN_GEN}/data/views/musphel-hard.json.gz`,
 } as const;
-
-export const NOTMETER_BARE_PAGES_ROOT = "https://notmeter.com/g/9c13dbd56489c717/";
 
 export type DpsSortKey = "typical" | "peak";
 export type DpsContentKey = "snowfield" | "deus" | "fallen" | "musphel";
@@ -42,9 +43,12 @@ export type DpsBoard = {
 /**
  * Integer idx: nDPS P50 (typical) / P90 (peak) versus the leader at that
  * percentile on the same slice, rounded to the nearest integer (0.5 → up).
- * Snowfield and Deus idx are the September 19 published board. Fallen uses
- * the same weekly slice and the same rounding. Musphel has no 09-16→23
- * weekly shard — that board is Recent14 / All / week of 09-02→09 only.
+ * Scoring v2 pin 9c13dbd56489c717. Snowfield idx match the September 19
+ * board. Deus Assassin typical is 99 (Scout: 98→99). Fallen uses the same
+ * weekly slice and rounding. Musphel has no 09-16→23 weekly shard — that
+ * board is Recent14 / All / week of 09-02→09 only.
+ * Bars are relative indexes, low→high: left = min(typical, peak),
+ * right = max(typical, peak).
  */
 export const DPS_BOARDS: Record<DpsContentKey, DpsBoard> = {
   snowfield: {
@@ -104,7 +108,7 @@ export const DPS_BOARDS: Record<DpsContentKey, DpsBoard> = {
       {
         name: "Assassin",
         tag: "Melee burst",
-        typical: 98,
+        typical: 99,
         peak: 100,
         note: "Peak first on the older high-volume farm. Typical sits on Sorcerer’s shoulder. Phantom Clone care is not global.",
       },
