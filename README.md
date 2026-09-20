@@ -34,7 +34,8 @@ From `lib/nav.ts` / `app/*/page.tsx`:
 | `/know` | Need to know |
 | `/plan` | Week one |
 | `/alts` | Barracks |
-| `/classes` | Classes |
+| `/classes` | Classes index (Brawler is not day-1) |
+| `/classes/[slug]` | Launch class deep guide (8 slugs) |
 | `/tiers` | Tiers |
 | `/combat` | Combat |
 | `/gear` | Gear |

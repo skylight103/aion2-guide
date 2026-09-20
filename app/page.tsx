@@ -6,7 +6,7 @@ const directory = [
   { href: "/plan", section: "Start here", title: "Week-One Plan", blurb: "Unlock energy, stand up the barracks, spend cubes." },
   { href: "/roster", section: "Start here", title: "Current Roster", blurb: "Mains, alts, and who is covering each role." },
   { href: "/know", section: "Start here", title: "What You Need to Know", blurb: "Dates, platforms, factions, money, and KR vs Global." },
-  { href: "/classes", section: "Play", title: "Classes", blurb: "All eight launch classes and who should pick them." },
+  { href: "/classes", section: "Play", title: "Classes", blurb: "Eight launch deep guides. Brawler is not day-1." },
   { href: "/tiers", section: "Play", title: "DPS Tier List", blurb: "Role first, then the September 19 NotMeter nDPS snapshot." },
   { href: "/combat", section: "Play", title: "Combat", blurb: "How fights work: PvE, PvP, macros, farming." },
   { href: "/gear", section: "Systems", title: "Gear", blurb: "Story greens to KR BiS: slots, imprint, Potential, succession." },
