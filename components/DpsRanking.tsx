@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { DPS_BOARDS, type DpsContentKey, type DpsSortKey } from "@/lib/notmeter";
 
-const SCALE_MIN = 70;
+const SCALE_MIN = 0;
 const SCALE_MAX = 100;
+/** Half of size-3.5 so a 0/100 marker center stays on the rail. */
+const MARKER_HALF_PX = 7;
 
 const CONTENT_CHIPS: readonly [DpsContentKey, string][] = [
   ["snowfield", "Current ranker"],
@@ -15,6 +17,14 @@ const CONTENT_CHIPS: readonly [DpsContentKey, string][] = [
 
 function pos(value: number) {
   return ((value - SCALE_MIN) / (SCALE_MAX - SCALE_MIN)) * 100;
+}
+
+/** Center at idx, clamped so the marker box never crosses 0% or 100%. */
+function markerStyle(value: number): CSSProperties {
+  return {
+    left: `clamp(${MARKER_HALF_PX}px, ${pos(value)}%, calc(100% - ${MARKER_HALF_PX}px))`,
+    transform: "translate(-50%, -50%)",
+  };
 }
 
 /** Bar endpoints: left = low, right = high. Not typical→peak order. */
@@ -41,27 +51,98 @@ function IdxEnds({ typical, peak, sort }: { typical: number; peak: number; sort?
   );
 }
 
+function EndTick({ value, tone }: { value: number; tone: "typical" | "peak" }) {
+  const fill =
+    tone === "typical"
+      ? "bg-[var(--gold-2)] shadow-[0_0_10px_rgba(240,213,154,0.45)]"
+      : "bg-[var(--asmo)] shadow-[0_0_10px_rgba(155,140,255,0.45)]";
+  return (
+    <span
+      className={`absolute top-1/2 size-3.5 rounded-full border-2 border-[#12151e] ${fill}`}
+      style={markerStyle(value)}
+      data-tick={tone}
+    />
+  );
+}
+
+function EqualPoint({ value }: { value: number }) {
+  return (
+    <span
+      className="absolute top-1/2 size-3.5 bg-[linear-gradient(135deg,#c9a15a,var(--asmo))] shadow-[0_0_10px_rgba(240,213,154,0.45)]"
+      style={{
+        ...markerStyle(value),
+        clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+      }}
+      data-bar-shape="point"
+    />
+  );
+}
+
 function DamageBand({ typical, peak }: { typical: number; peak: number }) {
   const { left: lo, right: hi } = barEnds(typical, peak);
-  const start = pos(lo);
-  const end = pos(hi);
-  const width = Math.max(end - start, 2.5);
+  const equal = lo === hi;
 
   return (
-    <div className="relative h-5" data-bar-dir="low-to-high" data-bar-left={lo} data-bar-right={hi}>
+    <div
+      className="relative h-5"
+      data-bar-dir="low-to-high"
+      data-bar-left={lo}
+      data-bar-right={hi}
+      data-bar-shape={equal ? "point" : "range"}
+      title={`Typical ${typical} · Peak ${peak}`}
+    >
       <div className="absolute inset-x-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-white/[0.07]" />
-      <div
-        className="absolute top-1/2 h-2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#c9a15a,var(--asmo))]"
-        style={{ left: `${start}%`, width: `${width}%` }}
-      />
-      <span
-        className="absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#12151e] bg-[var(--gold-2)] shadow-[0_0_10px_rgba(240,213,154,0.45)]"
-        style={{ left: `${pos(typical)}%` }}
-      />
-      <span
-        className="absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#12151e] bg-[var(--asmo)] shadow-[0_0_10px_rgba(155,140,255,0.45)]"
-        style={{ left: `${pos(peak)}%` }}
-      />
+      {!equal && (
+        <div
+          className="absolute top-1/2 h-2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#c9a15a,var(--asmo))]"
+          style={{ left: `${pos(lo)}%`, width: `${pos(hi) - pos(lo)}%` }}
+        />
+      )}
+      {equal ? (
+        <EqualPoint value={lo} />
+      ) : (
+        <>
+          <EndTick value={typical} tone="typical" />
+          <EndTick value={peak} tone="peak" />
+        </>
+      )}
+    </div>
+  );
+}
+
+function ScaleAxis() {
+  const ticks = [
+    { value: 0, label: "0", align: "start" as const },
+    { value: 25, label: "25", align: "center" as const },
+    { value: 50, label: "50", align: "center" as const },
+    { value: 75, label: "75", align: "center" as const },
+    { value: 100, label: "100", align: "end" as const },
+  ];
+  const shift = { start: "", center: "-translate-x-1/2", end: "-translate-x-full" };
+
+  return (
+    <div
+      className="relative h-5 min-w-0 flex-1 text-[11px] uppercase tracking-[0.14em] text-[var(--muted)]"
+      aria-hidden
+    >
+      {ticks.map((tick) => (
+        <span
+          key={tick.value}
+          className={`absolute top-0 whitespace-nowrap ${shift[tick.align]}`}
+          style={{ left: `${pos(tick.value)}%` }}
+        >
+          {tick.label}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ScaleRow() {
+  return (
+    <div className="flex gap-4 px-4">
+      <span className="w-10 shrink-0" aria-hidden />
+      <ScaleAxis />
     </div>
   );
 }
@@ -146,10 +227,8 @@ export function DpsRanking() {
         ))}
       </div>
 
-      <div className="mb-2 hidden px-[4.5rem] text-[11px] uppercase tracking-[0.14em] text-[var(--muted)] sm:flex">
-        <span>low {SCALE_MIN}</span>
-        <span className="mx-auto">85</span>
-        <span className="ml-auto">high {SCALE_MAX}</span>
+      <div className="mb-2">
+        <ScaleRow />
       </div>
 
       <div className="space-y-3">
@@ -181,12 +260,16 @@ export function DpsRanking() {
           </article>
         ))}
       </div>
+      <div className="mt-2">
+        <ScaleRow />
+      </div>
       <p className="mt-3 text-xs text-[var(--muted)]">
         Integer idx versus the leader at that percentile on this slice, rounded to the nearest integer (0.5 → up).
         Typical is nDPS P50. Peak is nDPS P90. Deus and Fallen use that same rounding. Bars read low → high: left is
-        min(typical, peak), right is max. Not an in-game stat and not a million-DPS claim. Support raw DPS is omitted
-        on this board — not missing from the meter. Gold is typical, violet is peak. Brawler sits near Assassin on
-        Snowfield nDPS and is not a launch class. Musphel is Recent 14 / All / the older 09-02→09 week only.
+        min(typical, peak), right is max. The rail is 0–100 idx. Equal typical and peak is a point on that rail, not a
+        bar. Not an in-game stat and not a million-DPS claim. Support raw DPS is omitted on this board — not missing
+        from the meter. Gold is typical, violet is peak. Brawler sits near Assassin on Snowfield nDPS and is not a
+        launch class. Musphel is Recent 14 / All / the older 09-02→09 week only.
       </p>
     </div>
   );
