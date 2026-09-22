@@ -103,26 +103,6 @@ export function GearToc() {
 
   return (
     <>
-      <nav className="gear-index" aria-label="On this page">
-        <header className="gear-index-head">
-          <p>On this page</p>
-          <span>{gearChapters.length} chapters</span>
-        </header>
-        <div className="gear-index-grid">
-          {gearChapters.map((chapter) => (
-            <a
-              key={chapter.id}
-              href={`#${chapter.id}`}
-              className={`gear-index-item${active === chapter.id ? " is-active" : ""}`}
-              onClick={jump(chapter.id)}
-            >
-              <span>{chapter.num}</span>
-              <strong>{chapter.title}</strong>
-              <em>{chapter.blurb}</em>
-            </a>
-          ))}
-        </div>
-      </nav>
       <div ref={sentinelRef} className="gear-toc-sentinel" aria-hidden="true" />
       <nav className={`gear-toc-bar${stuck ? " is-stuck" : ""}`} aria-label="Gear chapters">
         {gearChapters.map((chapter) => (

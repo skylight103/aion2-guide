@@ -8,7 +8,7 @@ export default function SourcesPage() {
       <PageHeader
         kicker="Reference"
         title="Sources and confidence"
-        lede="Researched September 6, 2026; NotMeter dungeon cache added September 19. Primary weight goes to NC, Steam, and the official livestream UI. KR/TW explains systems, not global numbers."
+        lede="Researched September 6, 2026; NotMeter dungeon cache refreshed September 22. Primary weight goes to NC, Steam, and the official livestream UI. KR/TW explains systems, not global numbers."
       />
       <DataTable
         headers={["Source", "What it supports"]}
@@ -33,16 +33,21 @@ export default function SourcesPage() {
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Community systems guides</h2>
       <p className="text-[var(--muted)]">
-        Used for how the client systems work (Amp, Soul Binding, Arcana, Daevanion, Pet Genus, damage buckets). Not a
-        published NC global numbers sheet.
+        Used for how the client systems work (Amp, Soul Binding, Arcana, Daevanion, Pet Genus, damage buckets) and for
+        the recorded 1–45 story path. Not a published NC global numbers sheet.
       </p>
       <DataTable
         headers={["Source", "What it supports", "What it does not prove"]}
         rows={[
           [
-            "Kanon — AION 2 PvE systems guide (Google Doc, updated Aug 23, 2026)",
-            "Gear layers (Amp, Bind / Sync / Reset, Manastone vs Soulstone, Theostone, Potential, transfer fragment costs), Pantheon pairs, launch 5-card Arcana, Daevanion board types, Pet Genus, wings Equip vs Owned, Closet, Specialty perk ladder, damage buckets and the live formula",
-            "October 5 item-level doors, 8-card Arcana, Chapter 1 pendant, named KR raid Accuracy/Crit caps as launch targets, or Brawler as a global class",
+            "Kanon — AION 2 PvE systems guide (Google Doc, updated Sept 20, 2026)",
+            "Gear layers (Amp, Bind / Sync / Reset, Manastone vs Soulstone, Theostone, Potential, transfer fragment costs), the Sept 20 global soul-line list, Pantheon pairs, launch 5-card Arcana, Daevanion board types, global Pet Genus targets, wings Equip vs Owned, Closet, Specialty perk ladder, damage buckets and the live formula",
+            "October 5 item-level doors, 8-card Arcana, Chapter 1 pendant, named KR raid Accuracy/Crit caps as launch targets, Asia genus lines or Asia crafted-Potential as a global craft rule, or Brawler as a global class. The wings section was not part of the Sept 20 pass",
+          ],
+          [
+            "Failure Guild — Level 1–45 Ultimate Speedrun Guide (KrixEW, Excalul)",
+            "The Asmodian 1–45 story path on the week-one plan: downtime order, arrow legend, sealed-dungeon detours, kisk notes, and the level-32 and second-rune quests. Their recorded run is 3h 21m at 1051 item level",
+            "An Elyos copy of the same arrows, or 3h 21m and 1051 item level as a launch result",
           ],
         ]}
       />
@@ -57,6 +62,27 @@ export default function SourcesPage() {
         {" · "}
         <a href="https://www.youtube.com/kanonxo" target="_blank" rel="noreferrer">
           youtube.com/kanonxo
+        </a>
+      </p>
+      <p className="mt-2 text-sm text-[var(--muted)]">
+        <a href="https://youtu.be/IEUfONykrMI" target="_blank" rel="noreferrer">
+          Failure Guild 1–45 run
+        </a>
+        {" · "}
+        <a href="https://www.twitch.tv/krixew" target="_blank" rel="noreferrer">
+          twitch.tv/krixew
+        </a>
+        {" · "}
+        <a href="https://www.twitch.tv/excalul" target="_blank" rel="noreferrer">
+          twitch.tv/excalul
+        </a>
+        {" · "}
+        <a href="https://discord.com/invite/hQHZD6X5CS" target="_blank" rel="noreferrer">
+          Discord
+        </a>
+        {" · "}
+        <a href="https://docs.google.com/document/d/1zfmmmebLIZ9BxHTQbhBIT7VKMMqncVzADf1K8NEtamA" target="_blank" rel="noreferrer">
+          the guide
         </a>
       </p>
 
@@ -90,7 +116,7 @@ export default function SourcesPage() {
             "35–45 farm brackets, 5–8 alt gold figures, named KR goldmine maps",
           ],
           [
-            "NotMeter (notmeter.com) dungeon cache, generated Sept 19, 2026 23:03 UTC",
+            "NotMeter (notmeter.com) dungeon cache, generated Sept 22, 2026 04:41 UTC",
             "nDPS vs raw DPS, P75 class sort, sample rules (40 logs, trim 10%, one character = one sample, 200K CP-gap drop), Snowfield of Sorrow / Deus Hard relative order, combat-rate averages, and the four verified calculator conversions (Power / Destruction / Justice / Wisdom)",
             "A Global week-one DPS number, Brawler as a launch class, Snowfield / Muspel as October 5 farms, or their CP-normalized Class Performance score (no A/B/C cells on this snapshot)",
           ],
@@ -101,7 +127,7 @@ export default function SourcesPage() {
           ],
           [
             "KR Sept 2–5, 2026 class notes",
-            "Assassin Phantom Clone 90s + extra crit damage. Spiritmaster fusion PvE +20%. Ranger Aimed Arrow spec bump. Gladiator bugfixes. Sorcerer not in this pass",
+            "Assassin Phantom Clone 90s + extra crit damage. Spiritmaster fusion PvE +20%. Ranger aimed-shot spec bump. Gladiator bugfixes. Sorcerer not in this pass",
             "Those numbers shipping on global day one",
           ],
           [

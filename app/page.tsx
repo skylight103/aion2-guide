@@ -7,7 +7,7 @@ const directory = [
   { href: "/roster", section: "Start here", title: "Current Roster", blurb: "Mains, alts, and who is covering each role." },
   { href: "/know", section: "Start here", title: "What You Need to Know", blurb: "Dates, platforms, factions, money, KR vs Global." },
   { href: "/classes", section: "Play", title: "Classes", blurb: "All eight launch classes and who should pick them." },
-  { href: "/tiers", section: "Play", title: "DPS Tier List", blurb: "Role first, then the current NotMeter nDPS snapshot." },
+  { href: "/tiers", section: "Play", title: "Class Tiers", blurb: "Role first, then the current Korean damage order." },
   { href: "/combat", section: "Play", title: "Combat", blurb: "How fights work: PvE, PvP, macros, farming." },
   { href: "/gear", section: "Systems", title: "Gear", blurb: "Story greens to KR BiS: slots, imprint, Potential, succession." },
   { href: "/activities", section: "Systems", title: "Activities", blurb: "Story, dungeons, Abyss, and capped rewards." },

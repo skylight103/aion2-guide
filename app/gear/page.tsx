@@ -104,7 +104,7 @@ export default function GearPage() {
             ],
             [
               "Potential",
-              "Crafted pieces ship maxed (and higher). Dungeon pieces eat Potential Stones morphed from spare gear. Lost on transfer",
+              "Asia craft ships this maxed and higher. Global craft does not auto-unlock it, and the gap is unconfirmed. Dungeon pieces use Potential Stones. Lost on transfer",
               "Does not inherit. Do not Potential a piece you will replace this week",
             ],
             [
@@ -258,7 +258,7 @@ export default function GearPage() {
           </li>
           <li>
             <strong>Eroded Afterimage (침식된 잔영)</strong>
-            <span>Hero armor without the craft bill. Weaker than Horned / Noble Dragon Lord craft — no 5% PvE resist, one fewer soul line.</span>
+            <span>Hero armor without the craft bill. On the Asia sheet it is behind Horned / Noble Dragon Lord craft: no 5% PvE Tolerance, one fewer soul line. That Potential gap is not confirmed for global.</span>
           </li>
           <li>
             <strong>Corroded Deus / Decontamination</strong>
@@ -283,8 +283,9 @@ export default function GearPage() {
         </h3>
         <p className="text-[var(--muted)]">
           Press and Inven through Season 3: Hero is the target, Unique is the bridge. Crafted Dragon Lord beats
-          Expedition on the same grade. Potential closes some of that gap on dungeon pieces, which is why a new player
-          can clear on Expedition gear and still be behind a craft weapon.
+          Expedition on the same grade. On Asia, Potential closes some of that gap on dungeon pieces, which is why a new
+          player can clear on Expedition gear and still be behind a craft weapon. Global craft does not ship that maxed
+          Potential.
         </p>
         <div className="spend-cards">
           <article className="spend-card">

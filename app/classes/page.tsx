@@ -58,9 +58,9 @@ export default function ClassesPage() {
         Templar Judgment (심판) and Gladiator Overhead Slam (내려찍기) can be most of that class’s personal damage from
         one button.
       </p>
-      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Class notes</h2>
+      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Class sheets</h2>
       <p className="mt-3 text-[var(--muted)]">
-        One panel per class: the job, the rotation, Daevanion, and official Skill Macro. No mouse software.
+        Pick a class. The sheet is the skill order, the hold macro, and the level-12 Nezekan board.
       </p>
       <ClassTabs />
       <NextLinks items={[{ href: "/alts", label: "Barracks and Energy" }, { href: "/tiers", label: "DPS Tier List" }]} />

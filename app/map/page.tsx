@@ -29,8 +29,7 @@ export default function MapPage() {
         Kibelisks. Vendors mark general goods and craft shops at named camps, plus the full bench set at the two towns
         — Dawn Legion Base and Zumion on Verteron, Safe Haven and Nornir on Altgard. Mark traces and cubes found on
         this device. Resources are field nodes — Odyle, Orichalcum, gems, herbs, logs, cooking mats, and shellfish —
-        each with the official gather marker. Turn a material on, then zoom. Nodes start off because there are
-        thousands of them.
+        each with the official gather marker. Turn a material on, then zoom. Nodes stay off until you do.
       </p>
       <NextLinks items={[{ href: "/activities", label: "Activities" }, { href: "/sources", label: "Sources" }]} />
     </>

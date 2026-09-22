@@ -68,8 +68,9 @@ export function CombatSkills() {
       />
       <p className="text-[var(--muted)]">
         Shards combine from Unstable Stigma Shards, or buy them with Abyss Points (Supply Request, dailies, weeklies,
-        Abyss). One Superior shard drops for each Stigma you take to 20. Supports get gatekept without key Stigma levels
-        — Undefeated Mantra, Light of Protection.
+        Abyss). One Superior shard drops for each Stigma you take to 20. After the level 50 update, a finished KR book
+        is three skills at 25, one at 23, and the rest at 20. Supports get gatekept without key Stigma levels —
+        Undefeated Mantra, Light of Protection.
       </p>
     </>
   );
@@ -159,7 +160,8 @@ export function CombatDaevanionPets() {
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Pet Genus</h2>
       <p className="text-[var(--muted)]">
         Five boards — Cogni, Fera, Natura, Varian, Special. Insight (the blue bar) is the board level. Push each to 10
-        before you lock lines, then Analyze. Locking a line makes the next roll more expensive. Three presets.
+        before you lock lines, then Analyze. Locking a line makes the next roll more expensive. Three presets. A high
+        yellow can beat a low orange.
       </p>
       <GuideShot
         src="/guide/pet-genus.webp"
@@ -171,18 +173,33 @@ export function CombatDaevanionPets() {
         rows={[
           [
             "1. Insight 10",
-            "Do not lock anything until 10, unless a yellow+ Smite of about 1.5–2% lands. Smite can roll on line 3 from Insight 7 and line 9 from 9",
+            "Leave every line unlocked until 10. The exception is a high yellow or orange keeper already sitting on line 4, if waiting for 10 is not practical",
           ],
           [
-            "2. Smite first",
-            "Roll with nothing locked until lines 3 and 9 are Smite, even if the other lines look finished. 2% is a keeper. Unique is the floor on those Smite slots",
-          ],
-          [
-            "3. The rest",
-            "Lines 1 / 4 / 7: Boss Attack over Crit. Lines 2 / 5 / 8: Max Attack over Attack Bonus. Line 6: Damage Tolerance. Special board: Smite on 3 and 9, Tolerance on 6, Max Attack on the rest",
+            "2. Line 4 first",
+            "Roll with nothing locked until line 4 is the keeper. Special (Smite) and Varian (Front / Back Boost) first, then Fera (Weapon Damage Boost), then Cogni (Critical Damage Boost)",
           ],
         ]}
       />
+      <p className="text-[var(--muted)]">
+        The same three patterns sit on every global board. Lines 1 and 5 are Max Attack over Attack Bonus. Lines 2 and
+        8 are HP Increase. Lines 3, 6, and 9 are Power Shard Bonus — swap those for Crit or Accuracy if you are still
+        short of those caps.
+      </p>
+      <DataTable
+        headers={["Board", "Line 4", "Line 7"]}
+        rows={[
+          ["Cogni", "Critical Damage Boost, then Damage Boost", "Damage Tolerance or PvE Damage Tolerance, over Endurance"],
+          ["Fera", "Weapon Damage Boost, then Damage Boost", "Damage Tolerance or PvE Damage Tolerance, over Endurance"],
+          ["Natura", "Multi-hit, Perfect", "PvE Damage Tolerance over Endurance"],
+          ["Varian", "Front / Back Damage Boost", "PvE Damage Tolerance over Endurance"],
+          ["Special", "Smite", "Damage Tolerance over Endurance"],
+        ]}
+      />
+      <p className="text-sm text-[var(--muted)]">
+        Live KR still fishes Smite on lines 3 and 9 (Unique is the floor there), Boss Attack on 1 / 4 / 7, Max Attack on
+        2 / 5 / 8, and Damage Tolerance on 6. That Asia sheet is not the global target above.
+      </p>
       <p className="text-[var(--muted)]">
         Pets also have Owned Effect: passive stats for unlocking and leveling more pets. Field kills and pet rewards fill
         that bar. The livestream pet cap (5 → 3) is still the launch roster rule — Genus is the board under those pets.

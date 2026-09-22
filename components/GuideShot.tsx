@@ -7,7 +7,7 @@ export function GuideShot({
   src: string;
   alt: string;
   kicker?: string;
-  variant?: "wide" | "tall" | "contain" | "inline" | "portrait";
+  variant?: "wide" | "tall" | "contain" | "inline" | "portrait" | "route";
 }) {
   const cls =
     variant === "tall"
@@ -18,7 +18,9 @@ export function GuideShot({
           ? "guide-shot guide-shot--inline"
           : variant === "portrait"
             ? "guide-shot guide-shot--portrait"
-            : "guide-shot";
+            : variant === "route"
+              ? "guide-shot guide-shot--route"
+              : "guide-shot";
   return (
     <figure className="my-6">
       {kicker ? <p className="guide-kicker">{kicker}</p> : null}

@@ -1,3 +1,4 @@
+import { SpeedrunRoute } from "@/components/SpeedrunRoute";
 import { Callout, DataTable, NextLinks, PageHeader } from "@/components/ui";
 
 export const metadata = { title: "Week-One Plan" };
@@ -17,7 +18,7 @@ export default function PlanPage() {
 
       <h2 className="font-[family-name:var(--font-display)] text-3xl">The loop</h2>
       <ol className="mt-4 list-decimal space-y-2 pl-5">
-        <li>Push Main Story on the character you are currently raising</li>
+        <li>Push the story on the character you are raising, on the Asmodian route below</li>
         <li>Stop at the Odyle Energy gate (~22–23, after the Breeze Boutique quest — confirm in-client)</li>
         <li>If this is still the first character, make the next alt and repeat until you have 1 + 3</li>
         <li>Spend capped cubes and energy on the highest clean reward, not open-world grind</li>
@@ -37,8 +38,8 @@ export default function PlanPage() {
         headers={["Phase", "Do this", "Do not"]}
         rows={[
           ["0 · Scale Test", "Learn energy bar, cube UI, flight. Wipe is expected.", "Treat test characters as the barracks"],
-          ["1 · First session", "Story, Ascension, binds. Same server and faction as the group.", "Side-quest full clears; +15 every green"],
-          ["2 · Main to the gate", "Story-rush to ~22. Nearby Sealed Dungeon only if you bounce.", "Open-world grind while story is still efficient"],
+          ["1 · First session", "Story, Ascension, binds. Same server and faction as the group.", "Unmarked side quests; upgrades past +5"],
+          ["2 · Main to the gate", "Story-rush to ~22 on the route below. Sealed Dungeons only where the arrows send you.", "Open-world grind while story is still efficient"],
           ["3 · Confirm stamina", "Finish Breeze Boutique. Watch Odyle Energy start ticking.", "Dump the first bar into a hideout you outlevel tonight"],
           ["4 · Three alts", "Repeat the story rush on alt 1, 2, and 3. Same faction.", "Gear four characters. Alts need a rotation, not a set"],
           ["5 · Cube week", "Highest limited-reward instance each character can clear cleanly.", "Wipe an hour on a skull you barely enter"],
@@ -48,13 +49,15 @@ export default function PlanPage() {
         ]}
       />
 
+      <SpeedrunRoute />
+
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Session templates</h2>
       <DataTable
         headers={["Time", "Hardcore session"]}
         rows={[
           ["45 min", "One character: story to the next gate, or one cube spend if energy is capping"],
           ["90 min", "Finish one alt to the energy gate, or two cube clears on characters that are already online"],
-          ["Founder evening", "Main to 22, start alt 1. Do not enhance."],
+          ["Founder evening", "Main to 22, start alt 1. Stop upgrades at +5"],
           ["Founder weekend", "Alts 2 and 3 to the gate. First real cube night on whatever is unlocked"],
           ["Reset night", "Sweep remaining charges. Check play-count before extras"],
         ]}

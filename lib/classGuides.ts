@@ -11,7 +11,7 @@ export type ClassGuide = {
   portraitAlt: string;
   pve: string[];
   pvp: string[];
-  stigma: { en: string; kr: string; note: string };
+  stigma: { en: string; kr: string; note: string; icon?: string };
   habit: string;
   mistake: string;
   skip: string;
@@ -96,7 +96,7 @@ export const classGuides: ClassGuide[] = [
     portraitAlt: "Gladiator class icon",
     pve: [
       "Not the pull if a Templar is there. Job is groggy and packs.",
-      "Party amp (Zikel’s Blessing / 지켈의 축복) → walk into the pack → Wave of Fury (분노의 파동) → dump on groggy.",
+      "Party amp (Zikel's Blessing) → walk into the pack → Frenzied Wave → dump on groggy.",
       "Stand in the mobs. Lifesteal is the sustain kit. Do not play as a turret of one wave skill.",
     ],
     pvp: [
@@ -111,14 +111,14 @@ export const classGuides: ClassGuide[] = [
     },
     habit: "Greatsword recovery is the tax. Full loop on Combat.",
     mistake: "Holding every animation to the end. Skipping the party groggy buff. Playing as the main tank when a Templar is already there.",
-    skip: "Polearm guides. One-button Wave of Fury as the whole rotation.",
+    skip: "Polearm guides. Those are AION 1. One-button Frenzied Wave as the whole rotation.",
     playstyle: [
-      "Blessing first. Walk in. Wave of Fury on the pack.",
+      "Blessing first. Walk in. Frenzied Wave on the pack.",
       "Cancel the light swing into the next skill so the sword is not stuck in recovery.",
       "Groggy is the dump window. Between windows, stay in melee and let lifesteal work.",
     ],
     leveling: [
-      "First: Wave of Fury and a lifesteal skill. Packs are how you live.",
+      "First: Frenzied Wave and a lifesteal skill. Packs are how you live.",
       "Push Overhead Slam (내려찍기) toward 20 early. It can be most of the parse once Specialty slots open.",
       "Next: the party amp and a gap-close.",
       "Last: off-tank tools, only if you are covering a missing Templar.",
@@ -131,7 +131,7 @@ export const classGuides: ClassGuide[] = [
     macros: [
       "Official Skill Macro: hold Weak (Sharp Strike) into Strong so the greatsword recovery is cut. Afterimage means the cancel landed.",
       "Weave Crushing Wave on cooldown. Sharp Strike is the mana refill — Wave-only burns spirit and the reset dies.",
-      "Press by hand: Zikel’s Blessing, Wave of Fury, Fracturing Rush, and the short immunity. If you are off-tanking, mix Cleaving Blow into the weave instead of more Wave.",
+      "Press by hand: Zikel’s Blessing, Frenzied Wave, Fracturing Rush, and the short immunity. If you are off-tanking, mix Cleaving Blow into the weave instead of more Wave.",
     ],
     sources: [
       { label: "NC Mar 2026", href: "https://about.ncsoft.com/en/news/article/aion2_update_260325" },
@@ -154,7 +154,7 @@ export const classGuides: ClassGuide[] = [
     portrait: "/classes/assassin-icon.webp",
     portraitAlt: "Assassin class icon",
     pve: [
-      "Stay behind the boss. Mark with Beast’s Roar (맹수의 포효), detonate the glyph, Ambush to the back, burst.",
+      "Stay behind the boss. Mark with Savage Roar, detonate the glyph, Ambush to the back, burst.",
       "Isolated targets only. You are not the pack clear. Front-facing is a large damage loss.",
       "If Ambush misses, leave. Before stealth is up, treat every pull as a reset drill.",
     ],
@@ -208,7 +208,7 @@ export const classGuides: ClassGuide[] = [
     portrait: "/classes/ranger-icon.webp",
     portraitAlt: "Ranger class icon",
     pve: [
-      "Snare Arrow stops the chase. Rapid Shot fills. Griffon Arrow is the heavy.",
+      "Snare Shot stops the chase. Rapid Fire fills. Deadshot and Griffon Arrow are the heavies.",
       "Keep the back-angle even at range. Standing still in front is a DPS leak.",
     ],
     pvp: [
@@ -222,25 +222,25 @@ export const classGuides: ClassGuide[] = [
     },
     habit: "Hold Rapid Fire, tap the heavy. Full loop on Combat.",
     mistake: "Standing in melee. Leaving reservation on and wondering why the heavy shot or a buff never fires during the weave.",
-    skip: "Treating Marksman as a ninth class. Building the bar around one Aimed Arrow only.",
+    skip: "Treating Marksman as a ninth class. Marksman was an old English name for Ranger. Building the bar around Deadshot only.",
     playstyle: [
       "Snare first. Hold Rapid Fire. Tap the heavy.",
       "Supporting Fire when the party is stacked on one target.",
       "If something closes, fly out. Do not turret from the ground in their face.",
     ],
     leveling: [
-      "First: Rapid Shot and a snare. You need a loop and a leave.",
+      "First: Rapid Fire and a snare. You need a loop and a leave.",
       "Next: the heavy arrow.",
       "Last: luxury arrows. Mobility before extra damage toys.",
     ],
     daevanion: [
-      "Skill nodes on Rapid Shot and Aimed Arrow (조준화살). Those two are the weave. Snare Arrow next.",
+      "Skill nodes on Rapid Fire and Snipe. Those two are the weave. Snare Shot next.",
       "Nezekan combat speed and cooldown first — Ranger is the class official Skill Macro was built for. Then attack and crit.",
       "Skip luxury-arrow twigs until the loop and a leave button exist.",
     ],
     macros: [
-      "Official Skill Macro: hold Weak and Strong (Rapid Shot) so the left / right cancel runs while you move. Delay floor 50 ms; bump to 60–70 ms if a shot eats.",
-      "Take Strong Attack off the bar if you want. Park Aimed Arrow, Rupture (파열화살), Pierce (송곳화살), and Gale (광풍화살) on right-click slots and tap them when they light.",
+      "Official Skill Macro: hold Weak and Strong (Rapid Fire) so the left / right cancel runs while you move. Delay floor 50 ms; bump to 60–70 ms if a shot eats.",
+      "Take Strong Attack off the bar if you want. Park Deadshot, Drill Dart, and Gale Arrow on right-click slots and tap them when they light.",
       "Reservation on in PvE. Off in open-world PvP so the kite stays instant. Supporting Fire is a party press, not a hold-spam.",
     ],
     sources: [
@@ -261,7 +261,7 @@ export const classGuides: ClassGuide[] = [
     portrait: "/classes/sorcerer-icon.webp",
     portraitAlt: "Sorcerer class icon",
     pve: [
-      "Ice root or freeze first. Then Curse Tree into Hellfire.",
+      "Ice Chain first. Then Curse: Tree into Hellfire.",
       "Weave the fire basic (Flame Arrow) between skills or mana and DPS both die.",
       "You can move on many casts. You are still frail.",
     ],
@@ -278,23 +278,23 @@ export const classGuides: ClassGuide[] = [
     mistake: "Dumping fire skills with no weave. Standing in melee and popping Hibernation as if it wins the fight.",
     skip: "Skipping the lock so every pull is a raw fire dump.",
     playstyle: [
-      "Lock first. Curse Tree. Hellfire.",
+      "Lock first. Curse: Tree. Hellfire.",
       "Weave the fire basic between every skill so mana and damage stay up.",
       "Hibernation only when you are about to die. Then get range back.",
     ],
     leveling: [
       "First: a fire nuke and an ice lock. The combo is the class.",
-      "Next: Curse Tree.",
+      "Next: Curse: Tree.",
       "Last: Hibernation and extra ice. Survivability after the burst exists.",
     ],
     daevanion: [
-      "Skill nodes on Flame Arrow (불꽃화살), Ice Chains (얼음사슬), Flame Harpoon (불꽃작살), and Hellfire. Those keep mana and the nuke cycling.",
+      "Skill nodes on Flame Arrow, Ice Chain, and Hellfire. Those keep mana and the nuke cycling.",
       "Nezekan combat speed and cooldown first. Then attack. Crit after the lock-into-fire combo exists.",
-      "Skip extra ice twigs until Hibernation and Curse Tree are on the board you actually press.",
+      "Skip extra ice twigs until Hibernation and Curse: Tree are on the board you actually press.",
     ],
     macros: [
       "Official Skill Macro: hold Weak (Flame Arrow) into Strong or the next cast. Afterimage means the cancel landed. Standing still to finish a cast is the dead parse.",
-      "Ice lock, Curse Tree, and Hellfire are timed presses on top of the hold. Flame Harpoon is the Hellfire cooldown shave — tap it in the weave.",
+      "Ice Chain, Curse: Tree, and Hellfire are timed presses on top of the hold.",
       "Reservation on for long PvE. Off if you need to walk a mechanic mid-cast. Hibernation is a panic button, never in the hold sequence.",
     ],
     sources: [
@@ -316,7 +316,7 @@ export const classGuides: ClassGuide[] = [
     portraitAlt: "Spiritmaster class icon",
     pve: [
       "Do not start a pull with spirits down. Summon fire, water, wind, and earth first.",
-      "Scream of Terror is the fear. Coordinated Assault is the burst once spirits are out. Ancient Spirit is a burst summon, not the rotation.",
+      "Cry of Terror is the fear. Elemental Fusion is the burst once spirits are out. Summon: Ancient Spirit is a burst summon, not the rotation.",
       "Keep buffs up, then burst. Damage drops if spirits die mid-fight.",
     ],
     pvp: [
@@ -333,7 +333,7 @@ export const classGuides: ClassGuide[] = [
     skip: "A damage stigma that replaces a summon. Spirits down is a dead pull.",
     playstyle: [
       "Four spirits up before the pull. Then your own orb hits.",
-      "Fear to create space. Coordinated Assault when the spirits are already out.",
+      "Fear to create space. Elemental Fusion when the spirits are already out.",
       "Proxy when someone is hitting you. Do not start a pull with pets down.",
     ],
     leveling: [
@@ -372,8 +372,8 @@ export const classGuides: ClassGuide[] = [
     portraitAlt: "Cleric class icon",
     pve: [
       "Keep the defense-shred brand (약화의 낙인 / 고통의 연쇄) and the party regen light (재생의 빛) up.",
-      "Between heals you deal: weave Earth’s Retribution (대지의 응보) into Condemn (단죄). Thunderclap (벽력) helps groggy. It is not every cooldown.",
-      "Ally combat rez (소환 부활) is not the same button as Reincarnating Touch.",
+      "Between heals you deal: weave Earth's Retribution into Condemnation. Judgment Thunder helps groggy. It is not every cooldown.",
+      "Ally combat rez is Summon Resurrection. Reincarnating Touch is the self-rez stigma.",
     ],
     pvp: [
       "Stay with the pack. Low personal damage, no dash.",
@@ -382,10 +382,11 @@ export const classGuides: ClassGuide[] = [
     stigma: {
       en: "Reincarnating Touch",
       kr: "환생의 손길",
-      note: "Self buff, then self-rez if you die while it is up. Different from the ally combat rez.",
+      icon: "/skills/reincarnating-touch.webp",
+      note: "Self buff, then self-rez if you die while it is up. Ally rez is a different button.",
     },
     habit: "Earth’s Retribution between heals or spirit dies. Full loop on Combat.",
-    mistake: "Heal-bot only — dropping the shred and regen. Never weaving the earth basic. Forgetting combat rez. Charging Thunderclap every time.",
+    mistake: "Heal-bot only — dropping the shred and regen. Never weaving the earth basic. Forgetting Summon Resurrection. Charging Judgment Thunder every time.",
     skip: "A solo-quest damage stigma that deletes a heal tool.",
     playstyle: [
       "Shred and regen stay up. Then you heal the lowest.",
@@ -395,7 +396,7 @@ export const classGuides: ClassGuide[] = [
     leveling: [
       "First: a real heal and the party regen. People staying up is the job.",
       "Next: the shred brand and combat rez.",
-      "Last: Thunderclap and extra damage, once the tank lives without you staring at the bar.",
+      "Last: Judgment Thunder and extra damage, once the tank lives without you staring at the bar.",
     ],
     daevanion: [
       "Skill nodes on a real heal, party regen (재생의 빛), and the shred brand first. People staying up is the board.",
@@ -404,7 +405,7 @@ export const classGuides: ClassGuide[] = [
     ],
     macros: [
       "Official Skill Macro: hold Weak (Earth’s Retribution) into Strong so spirit does not die between heals. Cleric cancel is quieter than Ranger — still do it.",
-      "Heals, ally rez, Salvation, and Thunderclap stay on keys you press. Do not dump the heal bar into the hold sequence.",
+      "Heals, ally rez, Salvation, and Judgment Thunder stay on keys you press. Do not dump the heal bar into the hold sequence.",
       "Reservation on so the heal still fires after a cancel. Reincarnating Touch is a self buff, not a weave step.",
     ],
     sources: [

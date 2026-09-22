@@ -77,7 +77,7 @@ export function GearAnatomy() {
             [
               "—",
               "Potential",
-              "Not boxed on this tooltip. PvE Boost or Tolerance — crafted pieces ship maxed, dungeon pieces use Potential Stones",
+              "Not boxed on this tooltip. PvE Boost or Tolerance. Asia craft ships this maxed. Global craft does not. Dungeon pieces use Potential Stones",
             ],
           ]}
         />
@@ -113,8 +113,10 @@ export function GearAmpAndSlots() {
         variant="contain"
       />
       <p className="text-sm text-[var(--muted)]">
-        PvP gear Potential is a PvP Boost line instead. Confirm the panel — those Amp and Potential numbers are the live
-        system, not a published global day-one sheet. Amp 5 numbers sit on the slot cards below.
+        Armor Amp 5 is still unverified. The Potential percents on the cards are the Asia sheet: crafted pieces there
+        ship maxed, and nearly double a dungeon piece. Global crafted gear does not auto-unlock Potential, and it is not
+        confirmed that a global craft beats a dungeon piece on that line. PvP gear uses a PvP Damage Boost line instead
+        — 10% on a weapon, 5% on armor and accessories, on that same Asia sheet.
       </p>
 
       <h3 id="slot-jobs" className="gear-sub">What the slot is for</h3>
@@ -129,7 +131,7 @@ export function GearAmpAndSlots() {
           <dl>
             <dt>Amp 5</dt>
             <dd>Attack 150 · Attack Increase 5%</dd>
-            <dt>Potential</dt>
+            <dt>Potential (Asia)</dt>
             <dd>Crafted PvE Boost 5% / dungeon 2.4%</dd>
           </dl>
         </article>
@@ -139,7 +141,7 @@ export function GearAmpAndSlots() {
           <dl>
             <dt>Amp 5</dt>
             <dd>Defense &amp; HP 400 · Increase 5%</dd>
-            <dt>Potential</dt>
+            <dt>Potential (Asia)</dt>
             <dd>Crafted PvE Tolerance 5% / dungeon 1.2%</dd>
           </dl>
         </article>
@@ -149,7 +151,7 @@ export function GearAmpAndSlots() {
           <dl>
             <dt>Amp 5</dt>
             <dd>Attack 100 · Defense 200 · Attack Increase 5%</dd>
-            <dt>Potential</dt>
+            <dt>Potential (Asia)</dt>
             <dd>Crafted PvE Boost 2.5% / dungeon 1.2%</dd>
           </dl>
         </article>
@@ -304,9 +306,11 @@ export function GearStones() {
 
       <h3 id="potential" className="gear-sub">Potential</h3>
       <p className="text-[var(--muted)]">
-        Crafted pieces already sit at max Potential. Dungeon pieces need Potential Stones, morphed from spare gear of
-        the matching tier. Stars go 1★ to 5★, then a prestiged 1★. Crafted PvE Boost and Tolerance beat the dungeon
-        numbers on the same slot — that is why a craft weapon still wins a Potential’d Expedition piece.
+        Weapons and accessories roll PvE Damage Boost. Armor rolls PvE Damage Tolerance. On Asia, a crafted piece
+        already sits at max, and that value is nearly double the dungeon line on the same slot — which is why a craft
+        weapon still wins a Potential’d Expedition piece there. Global crafted gear does not auto-unlock Potential, and
+        the craft-versus-dungeon gap is unconfirmed. Dungeon pieces take Potential Stones, morphed from spare gear of
+        the matching tier. Stars go 1★ to 5★, then a prestiged 1★. The line is lost on transfer.
       </p>
       <GuideShot
         src="/guide/potential-morph.webp"
@@ -377,7 +381,7 @@ export function GearExtraSlots() {
           [
             "Runes",
             "Smash two together plus Clash Rune Enhance Scrolls. Fail can destroy the piece",
-            "The only slot that can blow up. Live endgame sits around +7. Combat Speed after +6",
+            "The only slot that can blow up. Live endgame sits around +7",
           ],
           [
             "Pendant",
@@ -386,6 +390,10 @@ export function GearExtraSlots() {
           ],
         ]}
       />
+      <p className="mt-3 text-[var(--muted)]">
+        A rune starts at 0.5% Damage Boost, 0.5% Damage Tolerance, and 100 Penetration. Each level adds 0.5% and 50
+        Penetration. Combat Speed is 1% at +6, then +1% a level. Multi-hit after +9 is still unconfirmed.
+      </p>
     </>
   );
 }
@@ -489,22 +497,24 @@ export function GearIdealLines() {
     <>
       <h3 id="soul-lines" className="gear-sub">Soul lines worth fishing</h3>
       <p className="text-[var(--muted)]">
-        Order below is rarity, not raw damage. Fish the 1–2% lines first. Weapon Damage Boost hits harder than Damage
+        Order below is rarity, not raw damage. Fish the ~1% lines first. Weapon Damage Boost hits harder than Damage
         Boost, but Damage Boost is rarer on weapon / Guard, so you lock it when it appears. Same-grade Sync only.
+        These pools are the global list.
       </p>
       <DataTable
         headers={["Slot", "Fish first (rarity)", "Then"]}
         rows={[
-          ["Weapon / Guard", "Damage Boost ~2%", "Combat Speed, Weapon Damage Boost ~4%. Might, Multi-hit, Precision, Attack"],
+          ["Weapon / Guard", "Damage Boost ~2%", "Combat Speed and Weapon Damage Boost ~4%. Might and Multi-hit ~5%. Precision and Attack ~6%"],
           ["Helmet", "Smite ~1%, Attack Increase ~1%", "Attack ~4%, then Passives"],
-          ["Cloak", "Smite, Attack Increase, Perfect ~1%", "Attack, then Passives"],
-          ["Shoulders", "Critical Damage Boost ~3%", "Attack, then Passives"],
-          ["Chest", "Damage Boost ~3%", "Attack, then Passives"],
-          ["Pants", "Attack Increase, Perfect ~1%", "Damage Tolerance, Attack, Passives"],
-          ["Gloves", "Perfect ~1%", "Combat Speed, Attack, Passives"],
-          ["Boots", "Perfect ~1%", "Move Speed, Attack, Passives"],
-          ["Necklace / earrings", "Attack ~8%, then Passives", "Accuracy if you are missing the cap"],
-          ["Rings", "Attack ~8%, then Actives", "This is how you push a key skill to 20"],
+          ["Cloak", "Smite, Attack Increase, Perfect ~1%", "Attack ~4%, then Passives"],
+          ["Shoulders", "Smite ~1%", "Critical Damage Boost ~3%, Attack ~4%, then Passives"],
+          ["Chest", "Perfect ~1%", "Damage Boost ~3%, Attack ~4%, then Passives"],
+          ["Pants", "Attack Increase and Perfect ~1%", "Damage Tolerance ~3%, Attack ~4%, then Passives"],
+          ["Gloves", "Perfect ~1%", "Combat Speed ~3%, Attack ~4%, then Passives"],
+          ["Boots", "Perfect ~1%", "Move Speed ~3%, Attack ~4%, then Passives"],
+          ["Necklace", "Combat Speed and Might ~2%", "Attack ~8%, then Passives. Accuracy ~6% if you are short of the cap"],
+          ["Earrings", "Move Speed, Might, and Precision ~2%", "Attack ~8%, then Passives. Accuracy ~6% if you are short of the cap"],
+          ["Rings", "Might and Precision ~2%", "Attack ~8%, then Active skills. This is how you push a key skill to 20"],
           ["Bracelet", "Illusion, Wisdom, Destruction, Time", "Justice, Space. Assassin may want Death over Space"],
           ["Brooch", "Might, Precision, Accuracy, Constitution", "Crit or Block as the filler"],
         ]}
