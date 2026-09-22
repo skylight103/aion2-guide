@@ -12,13 +12,6 @@ export default function ClassesPage() {
         lede="Eight classes at launch. Tank, healer, support, and five damage jobs. Pick the job, then learn the loop."
       />
       <Callout tone="green">The launch roster is eight classes. Brawler is not one of them — do not start there.</Callout>
-      <h2 className="font-[family-name:var(--font-display)] text-3xl">First hour</h2>
-      <ol className="mt-3 list-decimal space-y-2 pl-5">
-        <li>Bind move, flight, a defense key, and your first four damage or heal keys</li>
-        <li>Kill story mobs until you can do that without looking at the bar</li>
-        <li>After wings, do the same loop in the air once in a safe field</li>
-        <li>Do not rebuild the bar for PvP until a story or dungeon fight is comfortable</li>
-      </ol>
       <p className="mt-6 text-[var(--muted)]">
         Role demand does not shuffle. Groups still need a Templar, a Cleric, and usually a Chanter.
       </p>

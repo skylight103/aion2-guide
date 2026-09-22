@@ -8,9 +8,9 @@ export function SpeedrunRoute() {
     <section className="mt-12">
       <h2 className="font-[family-name:var(--font-display)] text-3xl">1–45 story route</h2>
       <p className="mt-3 text-[var(--muted)]">
-        Failure Guild’s Asmodian path through Altgard, from Safe Haven to the level-45 story. Their recorded run finished
-        1–45 in 3 hours 21 minutes at 1051 item level. Use it on the character you are raising. The first three barracks
-        characters still stop at the energy gate.
+        Asmodian path through Altgard, from Safe Haven to the level-45 story. A recorded run finished 1–45 in 3 hours
+        21 minutes at 1051 item level. Use it on the character you are raising. The first three barracks characters
+        still stop at the energy gate.
       </p>
 
       <a
@@ -26,7 +26,7 @@ export function SpeedrunRoute() {
             Nobody Has Leveled Faster in AION 2
           </span>
           <span className="mt-2 text-sm text-[var(--muted)]">
-            Krix Domi · 1–45 in 3h 21m · 1051 item level · raw gameplay
+            1–45 in 3h 21m · 1051 item level · raw gameplay
           </span>
         </span>
       </a>
@@ -164,31 +164,6 @@ export function SpeedrunRoute() {
           ],
         ]}
       />
-
-      <p className="mt-6 text-sm text-[var(--muted)]">
-        Failure Guild, Level 1–45 Ultimate Speedrun Guide. Questions:{" "}
-        <a className="underline decoration-[var(--line)] underline-offset-4" href="https://www.twitch.tv/krixew" target="_blank" rel="noreferrer">
-          twitch.tv/krixew
-        </a>
-        {" · "}
-        <a className="underline decoration-[var(--line)] underline-offset-4" href="https://www.twitch.tv/excalul" target="_blank" rel="noreferrer">
-          twitch.tv/excalul
-        </a>
-        {" · "}
-        <a className="underline decoration-[var(--line)] underline-offset-4" href="https://discord.com/invite/hQHZD6X5CS" target="_blank" rel="noreferrer">
-          Discord
-        </a>
-        {" · "}
-        <a
-          className="underline decoration-[var(--line)] underline-offset-4"
-          href="https://docs.google.com/document/d/1zfmmmebLIZ9BxHTQbhBIT7VKMMqncVzADf1K8NEtamA"
-          target="_blank"
-          rel="noreferrer"
-        >
-          the guide
-        </a>
-        .
-      </p>
     </section>
   );
 }

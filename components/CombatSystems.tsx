@@ -4,12 +4,17 @@ import { GuideShot } from "@/components/GuideShot";
 export function CombatSkills() {
   return (
     <>
-      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Active, Passive, Stigma</h2>
+      <h3 id="types" className="gear-sub">
+        Active, Passive, Stigma
+      </h3>
       <p className="text-[var(--muted)]">
         Three skill types. Actives and Stigma unlock Specialty Perks as the level climbs. Passives do not. Wisdom Stones
         take an Active to 10 — leveling, Empyrean Traces, Nightmare and Shugo shops. Past 10 you need soul lines,
         Daevanion, and Arcana.
       </p>
+      <h3 id="specialty" className="gear-sub">
+        Specialty slots
+      </h3>
       <p className="text-[var(--muted)]">
         You pick three Specialty Perks, but the slots open on a ladder. Equip the perk into an open slot — unlocking it
         is not the same as using it.
@@ -76,10 +81,103 @@ export function CombatSkills() {
   );
 }
 
+export function CombatStatus() {
+  return (
+    <>
+      <h3 id="chains" className="gear-sub">
+        Chains
+      </h3>
+      <p className="text-[var(--muted)]">
+        A chain is a skill that is live because something already happened. The fight is a decision, not a rotation.
+        The class sheet is the button order. This is why a button stays dark until the condition is true.
+      </p>
+      <div className="pantheon-grid">
+        <article className="pantheon-card">
+          <h3 className="slot-name">Already afflicted</h3>
+          <p>
+            The hit only connects if the target is already in a state. Client conditions include Stagger, Knockdown,
+            Airborne, Stun, Frost, Slow, Root, and Fire Mark.
+          </p>
+        </article>
+        <article className="pantheon-card">
+          <h3 className="slot-name">Just triggered</h3>
+          <p>
+            A landing skill can open a short follow-up. The tooltip says it triggers another skill for a few seconds.
+            That flash is the chain. Press it or let it expire.
+          </p>
+        </article>
+        <article className="pantheon-card pantheon-card--star">
+          <h3 className="slot-name">Immunity</h3>
+          <p>
+            A boss with Incapacitated Immunity changes the skill’s motion. A follow-up that needs a status can still
+            proc, at the small chance printed on that skill.
+          </p>
+        </article>
+      </div>
+
+      <h3 id="stagger" className="gear-sub">
+        Stagger
+      </h3>
+      <p className="text-[var(--muted)]">
+        Stagger is a state. Skills list Stagger Gauge Damage — that number is the skill’s contribution to the gauge.
+        Other skills only connect on a target afflicted with Stagger. That window is the burst. Some bonuses treat an
+        Impact-type status as the same door.
+      </p>
+      <Callout tone="gold">
+        Miss the window and the next pattern overlaps. The gauge size is not a published number. Watch the bar.
+      </Callout>
+
+      <h3 id="control" className="gear-sub">
+        Control
+      </h3>
+      <p className="text-[var(--muted)]">
+        The same skill is often certain on an NPC and a lower chance on a player. Read the second line of the tooltip.
+      </p>
+      <DataTable
+        headers={["Family", "Client names", "What it means"]}
+        rows={[
+          [
+            "Hard",
+            "Stun, Knockdown, Airborne, Grab, Frost, Fear",
+            "One cleanse strips all six and grants Tenacity for 5 seconds. Tenacity is Status Effect Immunity",
+          ],
+          [
+            "Follow-up",
+            "Stagger, Knockdown, Airborne, Stun, Frost, Slow, Root, Fire Mark",
+            "Skills that say “afflicted with” only hit this",
+          ],
+          [
+            "Other",
+            "Root, Seal, Blind, Slow, Poison, Shrink, Knock Back, Taunt",
+            "Not on that six-name cleanse. Shrink cuts Accuracy and Attack. Poison is damage over time",
+          ],
+          [
+            "Boss",
+            "Incapacitated Immunity",
+            "Control that would sit the boss changes motion instead. A few follow-ups still roll a small chance",
+          ],
+          [
+            "Threat",
+            "Enmity",
+            "Printed on tank skills. Taunt is a separate short status, and some skills only apply it to players",
+          ],
+        ]}
+      />
+      <p className="text-[var(--muted)]">
+        Block and parry are stats. If Accuracy does not cover them, the swing misses. A timed perfect version of each
+        exists on the Korean client. The global button name is unpublished. Some gap-closes also change after Dodge, or
+        while you are flying.
+      </p>
+    </>
+  );
+}
+
 export function CombatArcana() {
   return (
     <>
-      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Arcana</h2>
+      <h3 id="cards" className="gear-sub">
+        Cards
+      </h3>
       <p className="text-[var(--muted)]">
         Cards that give Pantheon stats plus skill or stat lines. Think of card types as slots and sets as set bonuses.
         Transcendence drops cards and Training Arcana. Smash extras or Training Arcana into the equipped card to level
@@ -107,6 +205,9 @@ export function CombatArcana() {
         Asia launched with five cards (Chalice through Mirror) and two sets: Primal Vigor and Magic Armor. Global is
         expected to start there. The 8-card Punishing Overture / Protected Soul spread is later KR. Scale is not launch.
       </Callout>
+      <h3 id="sets" className="gear-sub">
+        Launch set
+      </h3>
       <p className="text-[var(--muted)]">
         Feeding a card into a better one keeps some, not all, of the EXP. Same-type feed bonuses exist. Crafting via
         Transmute lets you pick the lines: crystals morph from Transcendence shards. Craft Chalice first — it has the
@@ -133,7 +234,9 @@ export function CombatArcana() {
 export function CombatDaevanionPets() {
   return (
     <>
-      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Daevanion boards</h2>
+      <h3 id="daevanion" className="gear-sub">
+        Daevanion
+      </h3>
       <p className="text-[var(--muted)]">
         Eight boards. Walk out from the center. Respec is nearly free. Gray tiles are small stats, green are Passives or
         doubled stats, blue are Actives or percent stats, orange are the expensive edges.
@@ -157,7 +260,9 @@ export function CombatDaevanionPets() {
         ]}
       />
 
-      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Pet Genus</h2>
+      <h3 id="pets" className="gear-sub">
+        Pet Genus
+      </h3>
       <p className="text-[var(--muted)]">
         Five boards — Cogni, Fera, Natura, Varian, Special. Insight (the blue bar) is the board level. Push each to 10
         before you lock lines, then Analyze. Locking a line makes the next roll more expensive. Three presets. A high
@@ -202,7 +307,7 @@ export function CombatDaevanionPets() {
       </p>
       <p className="text-[var(--muted)]">
         Pets also have Owned Effect: passive stats for unlocking and leveling more pets. Field kills and pet rewards fill
-        that bar. The livestream pet cap (5 → 3) is still the launch roster rule — Genus is the board under those pets.
+        that bar. The pet cap is 5, then 3. That is still the launch roster rule — Genus is the board under those pets.
       </p>
     </>
   );
@@ -211,7 +316,9 @@ export function CombatDaevanionPets() {
 export function CombatStats() {
   return (
     <>
-      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">How damage is built</h2>
+      <h3 id="priority" className="gear-sub">
+        What to take
+      </h3>
       <p className="text-[var(--muted)]">
         Stats sit in different buckets. The first 10% of a bucket that starts at 0 (Front / Back Boost) beats the first
         10% of a bucket that already starts high (Critical Damage starts at 50%). Diminishing returns get worse as KR
@@ -277,6 +384,9 @@ export function CombatStats() {
         accessory attack, Attack lines, Manastone Attack, and Closet. Everything else is added later, after Attack
         Increase.
       </p>
+      <h3 id="formula" className="gear-sub">
+        Order of a hit
+      </h3>
       <pre className="formula-panel">{`[((Pure Attack × Weapon Damage Boost) × Multi-Hit × Power Shard) + Attack Bonus]
   × Attack Increase + PvE / Boss / Species / Front Attack
   × Skill coefficient

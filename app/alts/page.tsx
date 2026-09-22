@@ -26,24 +26,24 @@ export default function AltsPage() {
           [
             "Odyle Energy",
             "Spend to open Odyle Energy Cubes after a clear. No energy, no cube. You can still finish the instance.",
-            "Confirmed global via Membership text. KR treats the bar as per character.",
+            "Confirmed globally. KR treats the bar as per character.",
           ],
           [
             "Weekly reward charges",
             "How many times that character can claim the good dungeon reward this week.",
-            "KR/TW live snapshot. Exact global counts are unpublished.",
+            "Exact global counts are unpublished.",
           ],
           [
             "Cumulative Play Reward Adjustment",
             "After enough weekly plays of a mode, cube Kina % drops. Mats and gear rolls are a separate roll.",
-            "Official livestream UI. Play counts accumulate weekly, per mode, on a per-server basis.",
+            "Play counts accumulate weekly, per mode, on a per-server basis.",
           ],
         ]}
       />
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">When stamina starts</h2>
       <p>
-        KR/TW writeups put the first real energy tick after the{" "}
+        The first real energy tick is after the{" "}
         <strong>Breeze Boutique / Wind Breeze Merchant</strong> quest around <strong>level 22–23</strong>. Supply /
         replenishment requests unlock around <strong>level 25</strong>. That is why the efficient stop is ~22 instead
         of riding one story to 45.
@@ -86,7 +86,7 @@ export default function AltsPage() {
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Why three alts, not one, not eight</h2>
       <p className="text-[var(--muted)]">
-        Official livestream tooltip for Expedition-style cubes. Kina from Odyle Energy Cubes only:
+        Kina from Odyle Energy Cubes only:
       </p>
       <DataTable
         headers={["Total play count", "Kina received"]}

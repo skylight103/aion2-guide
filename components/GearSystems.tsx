@@ -456,7 +456,7 @@ export function GearWingsCloset() {
 
       <h3 id="wing-meta" className="gear-sub">What KR is actually wearing</h3>
       <p className="text-[var(--muted)]">
-        Parse share from aion2tool jobstats, KR as of August 21, 2026. Not a launch BiS list — some of these pairs will
+        What Korean players are wearing. Not a launch list — some of these pairs will
         not exist on October 5, and Front / Back Boost may still get adjusted. Wear what the client gives you.
       </p>
       <DataTable

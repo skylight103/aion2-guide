@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { classGuides } from "@/lib/classGuides";
@@ -418,21 +417,6 @@ export function ClassTabs() {
           </section>
         </div>
 
-        <footer className="border-t border-[var(--line)] p-5 text-sm text-[var(--muted)]">
-          Attack cancel and reservation are on{" "}
-          <Link href="/combat" className="text-[var(--gold-2)] underline-offset-2 hover:underline">
-            Combat
-          </Link>
-          . Skill art and this Nezekan layout are client icons via aion2.app. Sources:{" "}
-          {current.sources.map((source, i) => (
-            <span key={source.href}>
-              {i > 0 ? " · " : null}
-              <a href={source.href} target="_blank" rel="noreferrer" className="text-[var(--gold-2)] hover:underline">
-                {source.label}
-              </a>
-            </span>
-          ))}
-        </footer>
       </article>
     </div>
   );

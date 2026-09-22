@@ -19,7 +19,6 @@ export type ClassGuide = {
   leveling: string[];
   daevanion: string[];
   macros: string[];
-  sources: { label: string; href: string }[];
 };
 
 export const classGuides: ClassGuide[] = [
@@ -50,7 +49,7 @@ export const classGuides: ClassGuide[] = [
       kr: "전장의 깃발",
       note: "Slot it. Press it as a fight buff. Turns defense into extra offense.",
     },
-    habit: "Parry and block are the cancel. Full loop on Combat.",
+    habit: "Parry and block are the cancel.",
     mistake: "Never parrying. Pointing the boss at the party. Skipping taunt. Treating tank as AFK.",
     skip: "Ranking Templar on a DPS chart. AION 1 greatsword-swap guides.",
     playstyle: [
@@ -73,13 +72,6 @@ export const classGuides: ClassGuide[] = [
       "Official Skill Macro: Weak Attack (Vicious Strike / 맹렬한 일격) alternating with Strong. Hold the bound key. Delay floor is 50 ms.",
       "Put the Judgment line in the sequence: Judgment → Warding Strike (비호의 일격) → Shield Smite (방패 강타) → Pummel (연속 난타). That keeps Judgment lit.",
       "Press by hand: Taunt, Capture, Banner, Shield of Protection, Empyrean Lord’s Punishment, and charged Punishment. Reservation on in long PvE.",
-    ],
-    sources: [
-      { label: "NC Mar 2026", href: "https://about.ncsoft.com/en/news/article/aion2_update_260325" },
-      { label: "Gamevu EN", href: "https://www.gamevu.co.kr/news/articleView.html?idxno=52385" },
-      { label: "Inven class intro", href: "https://www.inven.co.kr/webzine/news/?news=311205" },
-      { label: "Inven Templar macro", href: "https://www.inven.co.kr/board/aion2/6438/25786" },
-      { label: "Inven Templar Daevanion", href: "https://www.inven.co.kr/board/aion2/6438/18539" },
     ],
   },
   {
@@ -109,7 +101,7 @@ export const classGuides: ClassGuide[] = [
       kr: "분쇄 돌진",
       note: "Forward rush with bind and groggy chip. Use it to stick, not to fly.",
     },
-    habit: "Greatsword recovery is the tax. Full loop on Combat.",
+    habit: "Greatsword recovery is the tax.",
     mistake: "Holding every animation to the end. Skipping the party groggy buff. Playing as the main tank when a Templar is already there.",
     skip: "Polearm guides. Those are AION 1. One-button Frenzied Wave as the whole rotation.",
     playstyle: [
@@ -132,13 +124,6 @@ export const classGuides: ClassGuide[] = [
       "Official Skill Macro: hold Weak (Sharp Strike) into Strong so the greatsword recovery is cut. Afterimage means the cancel landed.",
       "Weave Crushing Wave on cooldown. Sharp Strike is the mana refill — Wave-only burns spirit and the reset dies.",
       "Press by hand: Zikel’s Blessing, Frenzied Wave, Fracturing Rush, and the short immunity. If you are off-tanking, mix Cleaving Blow into the weave instead of more Wave.",
-    ],
-    sources: [
-      { label: "NC Mar 2026", href: "https://about.ncsoft.com/en/news/article/aion2_update_260325" },
-      { label: "Gamevu EN", href: "https://www.gamevu.co.kr/news/articleView.html?idxno=52385" },
-      { label: "Inven class intro", href: "https://www.inven.co.kr/webzine/news/?news=311205" },
-      { label: "Harukyu Glad PvE", href: "https://harukyu.tistory.com/60" },
-      { label: "Baystory Glad PvE", href: "https://baystory.tistory.com/564275" },
     ],
   },
   {
@@ -167,7 +152,7 @@ export const classGuides: ClassGuide[] = [
       kr: "암영보",
       note: "Reposition / vanish. Use it to start the back-angle or to leave a failed opener.",
     },
-    habit: "If a leftover swing is still playing, the opener is dead. Full loop on Combat.",
+    habit: "If a leftover swing is still playing, the opener is dead.",
     mistake: "Fighting from the front like a Gladiator. Skipping stealth and Ambush. Standing in melee as a sustained auto-attacker.",
     skip: "A full extra-AoE bar before Ambush and stealth are comfortable.",
     playstyle: [
@@ -189,11 +174,6 @@ export const classGuides: ClassGuide[] = [
       "Official Skill Macro: Weak / Strong weave only. Hold it between openers so recovery does not eat the next dagger.",
       "Do not put Ambush, stealth, or Shadowstep in the hold sequence. Those are timed presses. A leftover swing still playing means the opener is dead.",
       "Reservation often off so the dive is not queued behind a basic. Stealth in, Ambush the back, burst, leave — by hand.",
-    ],
-    sources: [
-      { label: "Gamevu EN", href: "https://www.gamevu.co.kr/news/articleView.html?idxno=52385" },
-      { label: "NC Mar 2026", href: "https://about.ncsoft.com/en/news/article/aion2_update_260325" },
-      { label: "Inven official Skill Macro", href: "https://www.inven.co.kr/board/aion2/6444/1257" },
     ],
   },
   {
@@ -220,7 +200,7 @@ export const classGuides: ClassGuide[] = [
       kr: "지원 사격",
       note: "Party shot. Press it when the group is hitting the same target.",
     },
-    habit: "Hold Rapid Fire, tap the heavy. Full loop on Combat.",
+    habit: "Hold Rapid Fire, tap the heavy.",
     mistake: "Standing in melee. Leaving reservation on and wondering why the heavy shot or a buff never fires during the weave.",
     skip: "Treating Marksman as a ninth class. Marksman was an old English name for Ranger. Building the bar around Deadshot only.",
     playstyle: [
@@ -242,11 +222,6 @@ export const classGuides: ClassGuide[] = [
       "Official Skill Macro: hold Weak and Strong (Rapid Fire) so the left / right cancel runs while you move. Delay floor 50 ms; bump to 60–70 ms if a shot eats.",
       "Take Strong Attack off the bar if you want. Park Deadshot, Drill Dart, and Gale Arrow on right-click slots and tap them when they light.",
       "Reservation on in PvE. Off in open-world PvP so the kite stays instant. Supporting Fire is a party press, not a hold-spam.",
-    ],
-    sources: [
-      { label: "Gamevu EN", href: "https://www.gamevu.co.kr/news/articleView.html?idxno=52385" },
-      { label: "NC Mar 2026", href: "https://about.ncsoft.com/en/news/article/aion2_update_260325" },
-      { label: "Official Skill Macro (Naver)", href: "https://blog.naver.com/hyjueng/224163038961" },
     ],
   },
   {
@@ -274,7 +249,7 @@ export const classGuides: ClassGuide[] = [
       kr: "동면",
       note: "Panic button. Use it to live through a dive, not to win the fight.",
     },
-    habit: "Fire basic, then the next skill. Full loop on Combat.",
+    habit: "Fire basic, then the next skill.",
     mistake: "Dumping fire skills with no weave. Standing in melee and popping Hibernation as if it wins the fight.",
     skip: "Skipping the lock so every pull is a raw fire dump.",
     playstyle: [
@@ -296,11 +271,6 @@ export const classGuides: ClassGuide[] = [
       "Official Skill Macro: hold Weak (Flame Arrow) into Strong or the next cast. Afterimage means the cancel landed. Standing still to finish a cast is the dead parse.",
       "Ice Chain, Curse: Tree, and Hellfire are timed presses on top of the hold.",
       "Reservation on for long PvE. Off if you need to walk a mechanic mid-cast. Hibernation is a panic button, never in the hold sequence.",
-    ],
-    sources: [
-      { label: "Gamevu EN", href: "https://www.gamevu.co.kr/news/articleView.html?idxno=52385" },
-      { label: "NC Mar 2026", href: "https://about.ncsoft.com/en/news/article/aion2_update_260325" },
-      { label: "Harukyu Sorcerer", href: "https://harukyu.tistory.com/65" },
     ],
   },
   {
@@ -328,7 +298,7 @@ export const classGuides: ClassGuide[] = [
       kr: "명령: 대역",
       note: "Dump incoming damage onto a spirit. Press it when you are the target, not after the spirit is already dead.",
     },
-    habit: "Spirits on the Strong Attack slot. Left-click only is a dead parse. Full loop on Combat.",
+    habit: "Spirits on the Strong Attack slot. Left-click only is a dead parse.",
     mistake: "Left-click only. Letting summons expire.",
     skip: "A damage stigma that replaces a summon. Spirits down is a dead pull.",
     playstyle: [
@@ -350,12 +320,6 @@ export const classGuides: ClassGuide[] = [
       "Official Skill Macro: put a spirit or fusion skill on the Strong Attack slot. Hold Weak + Strong. Left-click only is a dead parse.",
       "A live in-game setup: Strong side Curse → Fusion → the aerial hit (공지), plus Water / Earth / Fire / Corrosion (물·땅·불·부식) in the skill steps.",
       "Summon before the pull. Fear and Command: Proxy are manual. Reservation on so fusion still fires while you weave.",
-    ],
-    sources: [
-      { label: "NC May 2025", href: "https://about.ncsoft.com/en/news/article/aion2-update-250530-2" },
-      { label: "Gamevu EN", href: "https://www.gamevu.co.kr/news/articleView.html?idxno=52385" },
-      { label: "NC Mar 2026", href: "https://about.ncsoft.com/en/news/article/aion2_update_260325" },
-      { label: "Inven SM in-game macro", href: "https://www.inven.co.kr/board/aion2/6454/7346" },
     ],
   },
   {
@@ -385,7 +349,7 @@ export const classGuides: ClassGuide[] = [
       icon: "/skills/reincarnating-touch.webp",
       note: "Self buff, then self-rez if you die while it is up. Ally rez is a different button.",
     },
-    habit: "Earth’s Retribution between heals or spirit dies. Full loop on Combat.",
+    habit: "Earth’s Retribution between heals or spirit dies.",
     mistake: "Heal-bot only — dropping the shred and regen. Never weaving the earth basic. Forgetting Summon Resurrection. Charging Judgment Thunder every time.",
     skip: "A solo-quest damage stigma that deletes a heal tool.",
     playstyle: [
@@ -407,11 +371,6 @@ export const classGuides: ClassGuide[] = [
       "Official Skill Macro: hold Weak (Earth’s Retribution) into Strong so spirit does not die between heals. Cleric cancel is quieter than Ranger — still do it.",
       "Heals, ally rez, Salvation, and Judgment Thunder stay on keys you press. Do not dump the heal bar into the hold sequence.",
       "Reservation on so the heal still fires after a cancel. Reincarnating Touch is a self buff, not a weave step.",
-    ],
-    sources: [
-      { label: "NC Mar 2026", href: "https://about.ncsoft.com/en/news/article/aion2_update_260325" },
-      { label: "Gamevu EN", href: "https://www.gamevu.co.kr/news/articleView.html?idxno=52385" },
-      { label: "Official Skill Macro (Naver)", href: "https://blog.naver.com/hyjueng/224163038961" },
     ],
   },
   {
@@ -441,7 +400,7 @@ export const classGuides: ClassGuide[] = [
       kr: "결계의 주문",
       note: "Short party floor, not full immunity. Save it for a wipe pattern.",
     },
-    habit: "Reservation on in PvE so mantras stay up. Off only for a dash you must time. Full loop on Combat.",
+    habit: "Reservation on in PvE so mantras stay up. Off only for a dash you must time.",
     mistake: "Playing as a backline turret. Dropping mantras. Using Barrier as a panic immunity. Treating Chanter as the eight-man main healer.",
     skip: "A plan that replaces the Cleric. Mantras down is a dead Chanter.",
     playstyle: [
@@ -463,12 +422,6 @@ export const classGuides: ClassGuide[] = [
       "Official Skill Macro: hold the staff Weak / Strong weave the same way Gladiator cuts recovery. The cancel is for spirit, not a second heal bar.",
       "Do not put mantras or Barrier in the hold sequence. Pre-buff the unbreakable mantra. Haste/crit mantra on groggy. Dash by hand.",
       "Reservation on in PvE so mantras stay up. Off only for a dash you must time. Heal chant when someone dips.",
-    ],
-    sources: [
-      { label: "NC Mar 2026", href: "https://about.ncsoft.com/en/news/article/aion2_update_260325" },
-      { label: "Gamevu EN", href: "https://www.gamevu.co.kr/news/articleView.html?idxno=52385" },
-      { label: "Inven class intro", href: "https://www.inven.co.kr/webzine/news/?news=311205" },
-      { label: "Inven official Skill Macro", href: "https://www.inven.co.kr/board/aion2/6444/1257" },
     ],
   },
 ];

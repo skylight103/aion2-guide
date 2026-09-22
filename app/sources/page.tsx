@@ -176,6 +176,16 @@ export default function SourcesPage() {
             "Those defensive names, slot counts, or coefficient values on global day one",
           ],
           [
+            "Steam store page",
+            "Chain skills. Precision, timing, and positioning. A fight is a decision, not a rotation",
+            "A fixed global rotation or a published chain list",
+          ],
+          [
+            "aion2.app skill tooltips (client strings)",
+            "Stagger Gauge Damage, Stagger as a hit condition, Impact-type status, the Tenacity cleanse (Stun, Knockdown, Airborne, Grab, Frost, Fear), Enmity, Incapacitated Immunity procs, and NPC control often listed at 100% against a lower player chance",
+            "A universal stagger-bar size, or one control duration for every skill",
+          ],
+          [
             "NC July 6, 2026 Chapter 1 notes",
             "KR moved Expedition / Transcendence to 5 and Sanctuary to 10. Expedition / Transcendence tickets removed; cubes spend Odyle Energy",
             "Print KR item-level doors or ticket-off as a published global rule",

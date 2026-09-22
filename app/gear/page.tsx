@@ -274,15 +274,15 @@ export default function GearPage() {
           </li>
         </ol>
         <p className="mt-3 text-sm text-[var(--muted)]">
-          KR Chapter 1 doors cited in August 2026 writeups: Expedition / Transcendence from item level 3,500, Ascension
-          Trial Doom at 4,000, Muspel at 4,500. Read the live panel. Those numbers are not a global week-one list.
+          On the current Korean client, Expedition and Transcendence open from item level 3,500, Ascension Trial Doom at
+          4,000, and Muspel at 4,500. Read the live panel. Those numbers are not a global week-one list.
         </p>
 
         <h3 id="kr-bis" className="gear-sub">
           Current KR BiS read
         </h3>
         <p className="text-[var(--muted)]">
-          Press and Inven through Season 3: Hero is the target, Unique is the bridge. Crafted Dragon Lord beats
+          Hero is the target, Unique is the bridge. Crafted Dragon Lord beats
           Expedition on the same grade. On Asia, Potential closes some of that gap on dungeon pieces, which is why a new
           player can clear on Expedition gear and still be behind a craft weapon. Global craft does not ship that maxed
           Potential.
@@ -344,7 +344,7 @@ export default function GearPage() {
           </article>
         </div>
         <p className="mt-3 text-sm text-[var(--muted)]">
-          GameToc Season 3: a full Horned / Noble Dragon Lord (응룡왕 / 기룡왕) weapon bought off the market sat around
+          A full Horned / Noble Dragon Lord (응룡왕 / 기룡왕) weapon bought off the Korean market sat around
           280–300 million Kina; season shop and self-gather cut that. Hero +20 fell from ~100M to ~40M. Those are KR
           prices, not launch quotes.
         </p>

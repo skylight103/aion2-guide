@@ -12,7 +12,7 @@ export default function PlanPage() {
         lede="Hardcore opening week: unlock energy on the main, stand up three alts at the same gate, spend cubes inside the 100% Kina band, then push the real main."
       />
       <Callout tone="red">
-        A single-character rush to 45 leaves the energy week on the table. KR writeups start energy after the Breeze
+        A single-character rush to 45 leaves the energy week on the table. Energy starts after the Breeze
         Boutique quest around 22. Unlock that gate, then raise the barracks.
       </Callout>
 

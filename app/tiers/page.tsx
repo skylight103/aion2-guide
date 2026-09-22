@@ -53,7 +53,7 @@ export default function TiersPage() {
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Damage order</h2>
       <p className="text-[var(--muted)]">
-        Korean logs, September 22. On Snowfield the ranged classes pull away. On Deus, Assassin and Sorcerer are a
+        Later Korean dungeons. On Snowfield the ranged classes pull away. On Deus, Assassin and Sorcerer are a
         dead heat.
       </p>
       <DpsRanking />

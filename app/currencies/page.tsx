@@ -26,7 +26,7 @@ export default function CurrenciesPage() {
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Cumulative Play Reward Adjustment</h2>
       <p>
-        Official livestream UI. Play counts for each game mode accumulate weekly on a per-server basis. Once the count
+        Play counts for each game mode accumulate weekly on a per-server basis. Once the count
         exceeds a threshold, <strong>Kina from Odyle Energy Cubes</strong> is reduced. The further you go, the worse
         the cut. This is not a tax on quest gold or gathering.
       </p>

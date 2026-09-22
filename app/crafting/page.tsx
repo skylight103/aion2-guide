@@ -32,7 +32,7 @@ export default function CraftingPage() {
           ["Fail still pays XP", "If you let the channel finish. Cancel is often zero"],
           ["Quality", "Standard, Fine, Pure. Appraiser nodes raise Fine/Pure chance"],
           ["Points", "Each level: 1 common point. Every 10: 1 specialty point"],
-          ["You cannot max the tree", "KR writeups: ~65 common and 14 specialty across Novice 50 + Professional 50. The full tree wants more"],
+          ["You cannot max the tree", "About 65 common and 14 specialty across Novice 50 + Professional 50. The full tree wants more"],
           ["Reset", "About 50,000 Kina. Do not respec for fun"],
           ["Novice 50 → Professional", "Quest after 50. KR: turn in a Splendent Ruby (빛나는 루비; Gem Seeker helps). Then Professional 1–50 again"],
         ]}
@@ -72,7 +72,7 @@ export default function CraftingPage() {
           ["Vendor catalyst", "City craft merchants sell solvents / stamps. Ore + solvent → ingot is the Blacksmith XP dump"],
           ["Chain", "Orichalcum weapon → Expert → Artisan → later Dragon Lord ranks. The Splendent (빛나는) combo is the gate"],
           ["Missed combo", "Keep the fail. Supply request or the next chain still wants a base piece"],
-          ["KR rank cap", "Novice 50, then Professional. A later patch took craft proficiency to 70. Gathering writeups still stop at Professional 50"],
+          ["KR rank cap", "Novice 50, then Professional. A later patch took craft proficiency to 70. Gathering still stops at Professional 50"],
         ]}
       />
 
@@ -119,7 +119,7 @@ export default function CraftingPage() {
           ["Odyle (Standard / Fine / Pure)", "Odyle, in the air", "Every recipe, every morph. Pick it up"],
           ["Orichalcum ore → ingot", "Ore. Vendor solvent", "Blacksmith and Armor XP, then the weapon chain"],
           ["Asvata wood", "Log", "Handicraft weapons, some shields and higher scrolls"],
-          ["Ruby / Sapphire / Diamond", "Gem", "Alchemy weapons (Sorc ruby, SM sapphire in KR writeups), jewelry, High scrolls"],
+          ["Ruby / Sapphire / Diamond", "Gem", "Alchemy weapons (Sorcerer ruby, Spiritmaster sapphire), jewelry, High scrolls"],
           ["Azpha / Calendula and other herbs", "Herb", "Alchemy potions"],
           ["Meat, fruit, vendor salt/oil", "Cooking ingredient + hunt drops + craft NPC", "Food chain. Do not deliver Brilliant Odyle on a supply quest"],
           ["Artisan stones / Dragon Lord mats", "Expedition, Sanctuary, season shop — not a field node", "The actual BiS craft. This is the expensive part"],
@@ -185,14 +185,14 @@ export default function CraftingPage() {
         ]}
       />
       <p className="mt-3 text-sm text-[var(--muted)]">
-        GameToc: buying every Horned / Noble Dragon Lord (응룡왕 / 기룡왕) weapon mat off the KR market was ~280–300
+        Buying every Horned / Noble Dragon Lord (응룡왕 / 기룡왕) weapon mat off the KR market was ~280–300
         million Kina. Season shop and self-gather cut that. Professional 70 exists on KR specifically so those crafts
         stop failing. That cap is not a published global day-one number.
       </p>
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Weeklies and alts</h2>
       <p>
-        Craft limits are per character. That is a barracks feature, not a flavor line. KR live writeups keep a weekly
+        Craft limits are per character. That is a barracks feature, not a flavor line. There is a weekly
         Odyle-energy craft (seven crafts / 280 energy on one common sheet), weekly and emergency Abyss supply
         requests, and season craft deliveries. Failed Orichalcum weapons sit in the warehouse for those deliveries.
       </p>
