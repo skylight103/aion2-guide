@@ -26,19 +26,19 @@ export default function PlanPage() {
         <li>Only then take the real main past the gate</li>
       </ol>
       <Callout tone="green">
-        Founders can finish the 1+3 barracks during Advance Access. A single story character is slower on cubes.
+        Founders can finish the 1+3 barracks during Early Access / Advanced Access. A single story character is slower on cubes.
       </Callout>
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Phase order</h2>
       <p className="text-[var(--muted)]">
-        Phases in order, not calendar days. Scale Test wipes. Advance Access characters live, but markets stay separate
-        for a period.
+        Phases in order, not calendar days. Launch Scale Test is done and wiped. Early Access / Advanced Access
+        characters live, but markets stay separate for a period.
       </p>
       <DataTable
         headers={["Phase", "Do this", "Do not"]}
         rows={[
-          ["0 · Scale Test", "Learn energy bar, cube UI, flight. Wipe is expected.", "Treat test characters as the barracks"],
-          ["1 · First session", "Story, Ascension, binds. Same server and faction as the group.", "Unmarked side quests; upgrades past +5"],
+          ["0 · Scale Test", "Done. Cap was 37. Shop, Quna, and trade were off. Steam: uninstall the playtest.", "Treat test characters as the barracks"],
+          ["1 · First session", "Story, Ascension, binds. Same server and faction as the group.", "Side-quest full clears; +15 every green"],
           ["2 · Main to the gate", "Story-rush to ~22 on the route below. Sealed Dungeons only where the arrows send you.", "Open-world grind while story is still efficient"],
           ["3 · Confirm stamina", "Finish Breeze Boutique. Watch Odyle Energy start ticking.", "Dump the first bar into a hideout you outlevel tonight"],
           ["4 · Three alts", "Repeat the story rush on alt 1, 2, and 3. Same faction.", "Gear four characters. Alts need a rotation, not a set"],

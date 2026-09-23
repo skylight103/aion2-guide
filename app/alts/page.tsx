@@ -80,7 +80,7 @@ export default function AltsPage() {
         <li>Only after the barracks exists do you push the real main past the gate.</li>
       </ol>
       <Callout tone="green">
-        Founders have five live days before F2P. Use Advance Access to finish the 1+3 barracks, not to over-enhance one
+        Founders have five live days before F2P. Use Early Access / Advanced Access to finish the 1+3 barracks, not to over-enhance one
         character the October 5 crowd will catch on story gear.
       </Callout>
 
@@ -205,8 +205,8 @@ export default function AltsPage() {
       <DataTable
         headers={["Window", "Hardcore use"]}
         rows={[
-          ["Sep 17–18 Scale Test", "Learn the energy unlock and cube UI. Progress wipes. Do not treat it as barracks."],
-          ["Sep 30–Oct 4 Advance Access", "Finish 1+3 to the gate. Spend first cubes. Keep Kina liquid."],
+          ["Sep 17–18 Scale Test", "Done and wiped. Cap 37. Shop, Quna, and trade were off. Steam: uninstall the playtest before Early Access / Advanced Access."],
+          ["Sep 30–Oct 4 Early Access / Advanced Access", "Finish 1+3 to the gate. Spend first cubes. Keep Kina liquid."],
           ["Oct 5 launch", "F2P friends copy the same path. Founders already have four ticking bars."],
         ]}
       />

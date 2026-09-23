@@ -8,9 +8,9 @@ export default function TipsPage() {
       <PageHeader
         kicker="Reference"
         title="Essential tips"
-        lede="Most week-one regrets are social locks, a missing barracks, and resource panic — not class choice."
+        lede="Most week-one regrets are social locks, a missing barracks, and resource panic, not class choice."
       />
-      <Callout tone="red">Founder packs currently include 30 days of Membership. Scale Test wipes. KR/TW accounts cannot play here.</Callout>
+      <Callout tone="red">Founder&apos;s Packs include 30 days of Membership. Launch Scale Test is done and wiped. KR/TW accounts cannot play here.</Callout>
       <div className="grid gap-6 md:grid-cols-2">
         <div>
           <h2 className="font-[family-name:var(--font-display)] text-3xl text-[var(--ok)]">Do</h2>
@@ -30,7 +30,7 @@ export default function TipsPage() {
               ["11", "Spend Odyle Energy before the bar caps"],
               ["12", "Join a guild that matches timezone and faction"],
               ["13", "Keep a Kina reserve on the main"],
-              ["14", "Play the Scale Test to learn. It wipes"],
+              ["14", "Uninstall the Steam playtest before Early Access / Advanced Access. Launch Scale Test is done and wiped"],
             ]}
           />
         </div>
