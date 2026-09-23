@@ -33,7 +33,7 @@ function resolveTooltip(slug: string, name: string) {
   if (!tips) return null;
   if (tips[name]?.description) return { title: name, tip: tips[name] };
   const alias = tooltipAliases[slug]?.[name];
-  if (alias && tips[alias]) return { title: alias, tip: tips[alias] };
+  if (alias && tips[alias]?.description) return { title: alias, tip: tips[alias] };
   return null;
 }
 

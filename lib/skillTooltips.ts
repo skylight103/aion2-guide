@@ -1,6 +1,6 @@
 export type SkillTooltip = {
   kind: "Active" | "Passive" | "Stigma";
-  description: string;
+  description: string | null;
   cooldown?: number;
   mp?: number;
   hp?: number;
