@@ -126,7 +126,7 @@ export default function TiersPage() {
           <span>+0.2%p Smite per point</span>
         </article>
       </div>
-      <NextLinks items={[{ href: "/classes", label: "Classes" }, { href: "/roster", label: "Current Roster" }]} />
+      <NextLinks items={[{ href: "/classes", label: "Classes" }]} />
     </>
   );
 }

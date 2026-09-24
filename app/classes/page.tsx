@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ClassTabs } from "@/components/ClassTabs";
 import { Callout, DataTable, NextLinks, PageHeader } from "@/components/ui";
 import { beginnerPicks, rosterGlance } from "@/lib/classDeep";
-import { classDeepGuides } from "@/lib/classPages";
 
 export const metadata = { title: "Classes" };
 
@@ -57,29 +56,6 @@ export default function ClassesPage() {
         for each class is linked from the roster.
       </p>
       <ClassTabs />
-
-      <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">Launch eight</h2>
-      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {classDeepGuides.map((guide) => (
-          <Link
-            key={guide.slug}
-            href={`/classes/${guide.slug}`}
-            className="block rounded-2xl border border-[var(--line)] bg-[rgba(18,21,30,0.7)] p-5 no-underline transition hover:border-[var(--gold)]/50"
-          >
-            <div className="flex items-center gap-4">
-              <img src={guide.portrait} alt="" className="h-14 w-14 object-contain" />
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-[var(--gold)]">{guide.kr}</p>
-                <h3 className="mt-1 font-[family-name:var(--font-display)] text-2xl">{guide.name}</h3>
-                <p className="mt-1 text-sm text-[var(--muted)]">
-                  {guide.role} · {guide.weapons}
-                </p>
-              </div>
-            </div>
-            <p className="mt-3 text-sm text-[var(--muted)]">{guide.identity}</p>
-          </Link>
-        ))}
-      </div>
 
       <NextLinks items={[{ href: "/alts", label: "Barracks and Energy" }, { href: "/tiers", label: "DPS Tier List" }]} />
     </>

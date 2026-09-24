@@ -55,7 +55,7 @@ export function WeekOneMap() {
     gather: false,
   });
   const [gathers, setGathers] = useState<Partial<Record<GatherKind, boolean>>>({});
-  const [later, setLater] = useState(false);
+  const [later, setLater] = useState(true);
   const [hideFound, setHideFound] = useState(false);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<string | null>(null);

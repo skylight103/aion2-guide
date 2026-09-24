@@ -76,17 +76,95 @@ export default function KnowPage() {
           ["Battle passes", "Per character. NC wording includes upgrade materials — not proven cosmetics-only"],
         ]}
       />
+      <h3 className="mt-10 font-[family-name:var(--font-display)] text-2xl">Founder&apos;s Packs</h3>
+      <p className="text-[var(--muted)]">
+        One pack per account, on Steam or PURPLE. You play on the store you bought it from. The title, skins, pet, and
+        wings change how you look. They add no stats. Every item in the pack is bound.
+      </p>
+      <div className="pack-grid">
+        <article className="pack-card">
+          <img src="/packs/standard.jpg" alt="Standard Founder's Pack: five-day pass, supply chest, scroll, membership seal, and Vanguard of Atreia title card" />
+          <div>
+            <p className="pack-price">$24.99</p>
+            <h3>Standard</h3>
+            <ul>
+              <li>5-day Advanced Access, September 30–October 4</li>
+              <li>Daeva&apos;s Campaign Supply Chest</li>
+              <li>Title: Vanguard of Atreia</li>
+              <li>Special Quai Membership, 30 days</li>
+            </ul>
+          </div>
+        </article>
+        <article className="pack-card">
+          <img src="/packs/deluxe.jpg" alt="Deluxe Founder's Pack: Ascended Daeva armor on two characters and the Eternal Sun flaming weapon" />
+          <div>
+            <p className="pack-price">$49.99</p>
+            <h3>Deluxe</h3>
+            <ul>
+              <li>Everything in Standard</li>
+              <li>Ascended Daeva armor skin, 7 pieces</li>
+              <li>Eternal Sun weapon skin chest</li>
+            </ul>
+          </div>
+        </article>
+        <article className="pack-card">
+          <img src="/packs/ultimate.jpg" alt="Ultimate Founder's Pack: Moonlit Aria armor, Black Dragon pet, and Blazing Sun wings" />
+          <div>
+            <p className="pack-price">$99.99</p>
+            <h3>Ultimate</h3>
+            <ul>
+              <li>Everything in Deluxe</li>
+              <li>Moonlit Aria armor skin, 6 pieces</li>
+              <li>Black Dragon pet</li>
+              <li>Blazing Sun Wings</li>
+              <li>Daeva&apos;s Styling Chest</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <h3 className="mt-8 font-[family-name:var(--font-display)] text-2xl">In every pack</h3>
       <DataTable
-        headers={["Pack", "Price", "Included"]}
+        headers={["Item", "What is inside"]}
         rows={[
-          ["Standard", "$24.99", "5-day Early Access / Advanced Access, cosmetics/title/consumables, 30 days of Membership"],
-          ["Deluxe", "$49.99", "Same core as Standard, plus Deluxe extras on the store page"],
-          ["Ultimate", "$99.99", "Same core as Standard, plus Ultimate extras on the store page"],
+          [
+            "Daeva's Campaign Supply Chest",
+            "Return, Courage, Speed, Benediction, and Absorption Scrolls ×10 each. Life Potion ×100. Life Serum ×50. Healing Potion ×30. Power Shard ×10,000. Resurrection Spiritstone ×5",
+          ],
+          ["Vanguard of Atreia", "Unique-grade title. Appearance only"],
+          [
+            "Special Quai Membership",
+            "30 days from the moment you press activate, not from the purchase. Remote storage, personal trading, Wind Breeze Merchants, a higher Odyle Energy cap, the market, the Quna exchange, and extra cube selections in Expedition, Transcendence, and Sanctuary",
+          ],
+        ]}
+      />
+      <h3 className="mt-8 font-[family-name:var(--font-display)] text-2xl">Deluxe and Ultimate</h3>
+      <DataTable
+        headers={["Item", "Pack", "Pieces"]}
+        rows={[
+          [
+            "Ascended Daeva",
+            "Deluxe and Ultimate",
+            "Breastplate, greaves, helm, pauldrons, gloves, boots, cloak. Plate with leather",
+          ],
+          ["Eternal Sun", "Deluxe and Ultimate", "One weapon skin chest. The skin has a fire effect"],
+          [
+            "Moonlit Aria",
+            "Ultimate",
+            "Breastplate, greaves, helm, gloves, boots, cloak. Winter moonlight set. No pauldrons",
+          ],
+          ["Black Dragon", "Ultimate", "Pet that follows you. No stats"],
+          ["Blazing Sun Wings", "Ultimate", "Wing skin. Gold flames shaped like feathers"],
+          [
+            "Daeva's Styling Chest",
+            "Ultimate",
+            "Customization Voucher ×1. Appearance Change Voucher, 7 days ×1",
+          ],
         ]}
       />
       <Callout>
-        One Founder&apos;s Pack per account. Pick Standard, Deluxe, or Ultimate once. You can level and clear
-        content without paying. Membership is what unlocks the full player economy.
+        One Founder&apos;s Pack per account. You can level and clear without paying. On PURPLE you can pay the
+        difference later: Standard to Deluxe is $25, Deluxe to Ultimate is $50, Standard to Ultimate is $75. Steam has
+        no upgrade. Membership is what unlocks the full player economy.
       </Callout>
 
       <h2 className="mt-12 font-[family-name:var(--font-display)] text-3xl">KR vs Global</h2>

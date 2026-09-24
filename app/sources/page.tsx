@@ -23,8 +23,8 @@ export default function SourcesPage() {
             "F2P, Kina, Quna, $15 Membership gates market + exchange",
           ],
           [
-            "NC July 22, 2026 Founder's Pack notice",
-            "Standard $24.99, Deluxe $49.99, Ultimate $99.99. One pack per account. Five days of Early Access from September 30",
+            "NC July 22, 2026 Founder's Pack notice, revised September 16",
+            "Standard $24.99, Deluxe $49.99, Ultimate $99.99. One pack per account, platform-locked. Supply chest contents, Ascended Daeva (7) and Moonlit Aria (6) piece lists, Eternal Sun, Black Dragon, Blazing Sun Wings, Styling Chest vouchers. Special Quai Membership ×1 on every tier, 30 days from the activate click. PURPLE upgrades $25 / $50 / $75. Skins, title, pet, and wings add no stats",
           ],
           [
             "NC August 7, 2026 global livestream",

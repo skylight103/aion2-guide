@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s · AION 2 Guide",
   },
   description:
-    "Fan guide for AION 2 global launch week: dates, classes, combat, gear, currencies, and a live roster.",
+    "Fan guide for AION 2 global launch week: dates, classes, combat, gear, and currencies.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

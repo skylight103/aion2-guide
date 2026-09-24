@@ -4,7 +4,6 @@ import { Callout, DataTable } from "@/components/ui";
 const directory = [
   { href: "/alts", section: "Start here", title: "Barracks and Energy", blurb: "Stamina, play-count, and why three alts." },
   { href: "/plan", section: "Start here", title: "Week-One Plan", blurb: "Unlock energy, stand up the barracks, spend cubes." },
-  { href: "/roster", section: "Start here", title: "Current Roster", blurb: "Mains, alts, and who is covering each role." },
   { href: "/know", section: "Start here", title: "What You Need to Know", blurb: "Dates, platforms, factions, money, and KR vs Global." },
   { href: "/classes", section: "Play", title: "Classes", blurb: "Skill sheets and guides for the eight launch classes." },
   { href: "/tiers", section: "Play", title: "DPS Tier List", blurb: "Role first, then the current Korean nDPS snapshot." },
